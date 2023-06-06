@@ -1,15 +1,24 @@
 {
   "name": "tree-sitter-forth",
-  "version": "1.0.0",
-  "description": "Tree Sitter for Forth",
+  "version": "0.1.0",
+  "description": "Forth grammar for tree-sitter",
   "main": "bindings/node",
+  "keywords": [
+    "parser",
+    "lexer"
+  ],
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1"
+    "build": "tree-sitter generate && node-gyp build",
+    "test": "tree-sitter test",
+    "parse": "tree-sitter parse"
   },
   "author": "Alexander Brevig",
   "license": "MIT",
   "dependencies": {
     "nan": "^2.17.0"
+  },
+  "devDependencies": {
+    "tree-sitter-cli": "^0.20.1"
   },
   "tree-sitter": [
     {
