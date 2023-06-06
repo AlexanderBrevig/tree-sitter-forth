@@ -1,0 +1,12 @@
+==================
+String
+==================
+
+s" Hello World!" .s
+
+---
+
+(source_file
+  (string)
+  (builtin
+    (core)))

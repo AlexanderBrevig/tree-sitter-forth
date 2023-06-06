@@ -13,12 +13,15 @@ module.exports = grammar({
     _definition: $ => choice(
       // $.function_definition
       $.comment,
+      $.string,
       $.word_definition,
       $.number,
       choice($.builtin, $.word)
     ),
 
     comment: $ => /\\.*/,
+
+    string: $ => /s".*"/,
 
     word_definition: $ => seq(
       $.start_definition,
@@ -158,6 +161,7 @@ module.exports = grammar({
       caseInsensitive("[CHAR]"),
       caseInsensitive(".(\""),
       caseInsensitive(".R"),
+      caseInsensitive(".S"),
       caseInsensitive("0<>"),
       caseInsensitive("0>"),
       caseInsensitive("2>R"),

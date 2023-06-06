@@ -17,6 +17,10 @@
         },
         {
           "type": "SYMBOL",
+          "name": "string"
+        },
+        {
+          "type": "SYMBOL",
           "name": "word_definition"
         },
         {
@@ -41,6 +45,10 @@
     "comment": {
       "type": "PATTERN",
       "value": "\\\\.*"
+    },
+    "string": {
+      "type": "PATTERN",
+      "value": "s\".*\""
     },
     "word_definition": {
       "type": "SEQ",
@@ -615,6 +623,10 @@
         {
           "type": "PATTERN",
           "value": "(\\.r)|(\\.R)"
+        },
+        {
+          "type": "PATTERN",
+          "value": "(\\.s)|(\\.S)"
         },
         {
           "type": "PATTERN",

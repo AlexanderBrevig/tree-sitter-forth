@@ -49,6 +49,10 @@
           "named": true
         },
         {
+          "type": "string",
+          "named": true
+        },
+        {
           "type": "word",
           "named": true
         },
@@ -183,6 +187,10 @@
   },
   {
     "type": "start_definition",
+    "named": true
+  },
+  {
+    "type": "string",
     "named": true
   },
   {
