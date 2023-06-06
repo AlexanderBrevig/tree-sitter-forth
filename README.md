@@ -5,5 +5,5 @@ tree-sitter-forth
 
 [Forth][] grammar for [tree-sitter][].
 
-[forth-standard]: https://forth-standard.org/
+[Forth]: https://forth-standard.org/
 [tree-sitter]: https://github.com/tree-sitter/tree-sitter
