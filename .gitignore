@@ -1,0 +1,8 @@
+example-file
+Cargo.lock
+package-lock.json
+node_modules
+build
+*.log
+/examples/*/
+/target/

@@ -1,0 +1,914 @@
+{
+  "name": "forth",
+  "rules": {
+    "source_file": {
+      "type": "REPEAT",
+      "content": {
+        "type": "SYMBOL",
+        "name": "_definition"
+      }
+    },
+    "_definition": {
+      "type": "CHOICE",
+      "members": [
+        {
+          "type": "SYMBOL",
+          "name": "comment"
+        },
+        {
+          "type": "SYMBOL",
+          "name": "word_definition"
+        },
+        {
+          "type": "SYMBOL",
+          "name": "number"
+        },
+        {
+          "type": "CHOICE",
+          "members": [
+            {
+              "type": "SYMBOL",
+              "name": "builtin"
+            },
+            {
+              "type": "SYMBOL",
+              "name": "word"
+            }
+          ]
+        }
+      ]
+    },
+    "comment": {
+      "type": "PATTERN",
+      "value": "\\\\.*"
+    },
+    "word_definition": {
+      "type": "SEQ",
+      "members": [
+        {
+          "type": "SYMBOL",
+          "name": "start_definition"
+        },
+        {
+          "type": "SYMBOL",
+          "name": "word"
+        },
+        {
+          "type": "CHOICE",
+          "members": [
+            {
+              "type": "SYMBOL",
+              "name": "stack_effects"
+            },
+            {
+              "type": "BLANK"
+            }
+          ]
+        },
+        {
+          "type": "REPEAT",
+          "content": {
+            "type": "CHOICE",
+            "members": [
+              {
+                "type": "SYMBOL",
+                "name": "comment"
+              },
+              {
+                "type": "SYMBOL",
+                "name": "number"
+              },
+              {
+                "type": "CHOICE",
+                "members": [
+                  {
+                    "type": "SYMBOL",
+                    "name": "builtin"
+                  },
+                  {
+                    "type": "SYMBOL",
+                    "name": "word"
+                  }
+                ]
+              }
+            ]
+          }
+        },
+        {
+          "type": "SYMBOL",
+          "name": "end_definition"
+        }
+      ]
+    },
+    "number": {
+      "type": "PATTERN",
+      "value": "\\d+"
+    },
+    "builtin": {
+      "type": "CHOICE",
+      "members": [
+        {
+          "type": "SYMBOL",
+          "name": "core"
+        },
+        {
+          "type": "SYMBOL",
+          "name": "operator"
+        }
+      ]
+    },
+    "core": {
+      "type": "CHOICE",
+      "members": [
+        {
+          "type": "PATTERN",
+          "value": "(include)|(INCLUDE)"
+        },
+        {
+          "type": "PATTERN",
+          "value": "(!)|(!)"
+        },
+        {
+          "type": "PATTERN",
+          "value": "(#)|(#)"
+        },
+        {
+          "type": "PATTERN",
+          "value": "(#>)|(#>)"
+        },
+        {
+          "type": "PATTERN",
+          "value": "(#s)|(#S)"
+        },
+        {
+          "type": "PATTERN",
+          "value": "(')|(')"
+        },
+        {
+          "type": "PATTERN",
+          "value": "(\\*\\/mod)|(\\*\\/MOD)"
+        },
+        {
+          "type": "PATTERN",
+          "value": "(\\+!)|(\\+!)"
+        },
+        {
+          "type": "PATTERN",
+          "value": "(\\+loop)|(\\+LOOP)"
+        },
+        {
+          "type": "PATTERN",
+          "value": "(,)|(,)"
+        },
+        {
+          "type": "PATTERN",
+          "value": "(\\.)|(\\.)"
+        },
+        {
+          "type": "PATTERN",
+          "value": "(\\.\")|(\\.\")"
+        },
+        {
+          "type": "PATTERN",
+          "value": "(\\/mod)|(\\/MOD)"
+        },
+        {
+          "type": "PATTERN",
+          "value": "(0<)|(0<)"
+        },
+        {
+          "type": "PATTERN",
+          "value": "(0=)|(0=)"
+        },
+        {
+          "type": "PATTERN",
+          "value": "(1\\+)|(1\\+)"
+        },
+        {
+          "type": "PATTERN",
+          "value": "(1\\-)|(1\\-)"
+        },
+        {
+          "type": "PATTERN",
+          "value": "(2!)|(2!)"
+        },
+        {
+          "type": "PATTERN",
+          "value": "(2\\*)|(2\\*)"
+        },
+        {
+          "type": "PATTERN",
+          "value": "(2\\/)|(2\\/)"
+        },
+        {
+          "type": "PATTERN",
+          "value": "(2@)|(2@)"
+        },
+        {
+          "type": "PATTERN",
+          "value": "(2drop)|(2DROP)"
+        },
+        {
+          "type": "PATTERN",
+          "value": "(2dup)|(2DUP)"
+        },
+        {
+          "type": "PATTERN",
+          "value": "(2over)|(2OVER)"
+        },
+        {
+          "type": "PATTERN",
+          "value": "(2swap)|(2SWAP)"
+        },
+        {
+          "type": "PATTERN",
+          "value": "(<#)|(<#)"
+        },
+        {
+          "type": "PATTERN",
+          "value": "(>body)|(>BODY)"
+        },
+        {
+          "type": "PATTERN",
+          "value": "(>in)|(>IN)"
+        },
+        {
+          "type": "PATTERN",
+          "value": "(>number)|(>NUMBER)"
+        },
+        {
+          "type": "PATTERN",
+          "value": "(>r)|(>R)"
+        },
+        {
+          "type": "PATTERN",
+          "value": "(\\?dup)|(\\?DUP)"
+        },
+        {
+          "type": "PATTERN",
+          "value": "(@)|(@)"
+        },
+        {
+          "type": "PATTERN",
+          "value": "(abort)|(ABORT)"
+        },
+        {
+          "type": "PATTERN",
+          "value": "(abort\")|(ABORT\")"
+        },
+        {
+          "type": "PATTERN",
+          "value": "(abs)|(ABS)"
+        },
+        {
+          "type": "PATTERN",
+          "value": "(accept)|(ACCEPT)"
+        },
+        {
+          "type": "PATTERN",
+          "value": "(align)|(ALIGN)"
+        },
+        {
+          "type": "PATTERN",
+          "value": "(aligned)|(ALIGNED)"
+        },
+        {
+          "type": "PATTERN",
+          "value": "(allot)|(ALLOT)"
+        },
+        {
+          "type": "PATTERN",
+          "value": "(and)|(AND)"
+        },
+        {
+          "type": "PATTERN",
+          "value": "(base)|(BASE)"
+        },
+        {
+          "type": "PATTERN",
+          "value": "(begin)|(BEGIN)"
+        },
+        {
+          "type": "PATTERN",
+          "value": "(bl)|(BL)"
+        },
+        {
+          "type": "PATTERN",
+          "value": "(c!)|(C!)"
+        },
+        {
+          "type": "PATTERN",
+          "value": "(c,)|(C,)"
+        },
+        {
+          "type": "PATTERN",
+          "value": "(c@)|(C@)"
+        },
+        {
+          "type": "PATTERN",
+          "value": "(cell\\+)|(CELL\\+)"
+        },
+        {
+          "type": "PATTERN",
+          "value": "(cells)|(CELLS)"
+        },
+        {
+          "type": "PATTERN",
+          "value": "(char)|(CHAR)"
+        },
+        {
+          "type": "PATTERN",
+          "value": "(char\\+)|(CHAR\\+)"
+        },
+        {
+          "type": "PATTERN",
+          "value": "(chars)|(CHARS)"
+        },
+        {
+          "type": "PATTERN",
+          "value": "(constant)|(CONSTANT)"
+        },
+        {
+          "type": "PATTERN",
+          "value": "(count)|(COUNT)"
+        },
+        {
+          "type": "PATTERN",
+          "value": "(cr)|(CR)"
+        },
+        {
+          "type": "PATTERN",
+          "value": "(create)|(CREATE)"
+        },
+        {
+          "type": "PATTERN",
+          "value": "(decimal)|(DECIMAL)"
+        },
+        {
+          "type": "PATTERN",
+          "value": "(depth)|(DEPTH)"
+        },
+        {
+          "type": "PATTERN",
+          "value": "(do)|(DO)"
+        },
+        {
+          "type": "PATTERN",
+          "value": "(does>)|(DOES>)"
+        },
+        {
+          "type": "PATTERN",
+          "value": "(drop)|(DROP)"
+        },
+        {
+          "type": "PATTERN",
+          "value": "(dup)|(DUP)"
+        },
+        {
+          "type": "PATTERN",
+          "value": "(else)|(ELSE)"
+        },
+        {
+          "type": "PATTERN",
+          "value": "(emit)|(EMIT)"
+        },
+        {
+          "type": "PATTERN",
+          "value": "(environment\\?)|(ENVIRONMENT\\?)"
+        },
+        {
+          "type": "PATTERN",
+          "value": "(evaluate)|(EVALUATE)"
+        },
+        {
+          "type": "PATTERN",
+          "value": "(execute)|(EXECUTE)"
+        },
+        {
+          "type": "PATTERN",
+          "value": "(exit)|(EXIT)"
+        },
+        {
+          "type": "PATTERN",
+          "value": "(fill)|(FILL)"
+        },
+        {
+          "type": "PATTERN",
+          "value": "(find)|(FIND)"
+        },
+        {
+          "type": "PATTERN",
+          "value": "(fm\\/mod)|(FM\\/MOD)"
+        },
+        {
+          "type": "PATTERN",
+          "value": "(here)|(HERE)"
+        },
+        {
+          "type": "PATTERN",
+          "value": "(hold)|(HOLD)"
+        },
+        {
+          "type": "PATTERN",
+          "value": "(i)|(I)"
+        },
+        {
+          "type": "PATTERN",
+          "value": "(if)|(IF)"
+        },
+        {
+          "type": "PATTERN",
+          "value": "(immediate)|(IMMEDIATE)"
+        },
+        {
+          "type": "PATTERN",
+          "value": "(invert)|(INVERT)"
+        },
+        {
+          "type": "PATTERN",
+          "value": "(j)|(J)"
+        },
+        {
+          "type": "PATTERN",
+          "value": "(key)|(KEY)"
+        },
+        {
+          "type": "PATTERN",
+          "value": "(leave)|(LEAVE)"
+        },
+        {
+          "type": "PATTERN",
+          "value": "(literal)|(LITERAL)"
+        },
+        {
+          "type": "PATTERN",
+          "value": "(loop)|(LOOP)"
+        },
+        {
+          "type": "PATTERN",
+          "value": "(lshift)|(LSHIFT)"
+        },
+        {
+          "type": "PATTERN",
+          "value": "(m\\*)|(M\\*)"
+        },
+        {
+          "type": "PATTERN",
+          "value": "(max)|(MAX)"
+        },
+        {
+          "type": "PATTERN",
+          "value": "(min)|(MIN)"
+        },
+        {
+          "type": "PATTERN",
+          "value": "(mod)|(MOD)"
+        },
+        {
+          "type": "PATTERN",
+          "value": "(move)|(MOVE)"
+        },
+        {
+          "type": "PATTERN",
+          "value": "(negate)|(NEGATE)"
+        },
+        {
+          "type": "PATTERN",
+          "value": "(or)|(OR)"
+        },
+        {
+          "type": "PATTERN",
+          "value": "(over)|(OVER)"
+        },
+        {
+          "type": "PATTERN",
+          "value": "(postpone)|(POSTPONE)"
+        },
+        {
+          "type": "PATTERN",
+          "value": "(quit)|(QUIT)"
+        },
+        {
+          "type": "PATTERN",
+          "value": "(r>)|(R>)"
+        },
+        {
+          "type": "PATTERN",
+          "value": "(r@)|(R@)"
+        },
+        {
+          "type": "PATTERN",
+          "value": "(recurse)|(RECURSE)"
+        },
+        {
+          "type": "PATTERN",
+          "value": "(repeat)|(REPEAT)"
+        },
+        {
+          "type": "PATTERN",
+          "value": "(rot)|(ROT)"
+        },
+        {
+          "type": "PATTERN",
+          "value": "(rshift)|(RSHIFT)"
+        },
+        {
+          "type": "PATTERN",
+          "value": "(s\")|(S\")"
+        },
+        {
+          "type": "PATTERN",
+          "value": "(s>d)|(S>D)"
+        },
+        {
+          "type": "PATTERN",
+          "value": "(sign)|(SIGN)"
+        },
+        {
+          "type": "PATTERN",
+          "value": "(sm\\/rem)|(SM\\/REM)"
+        },
+        {
+          "type": "PATTERN",
+          "value": "(source)|(SOURCE)"
+        },
+        {
+          "type": "PATTERN",
+          "value": "(space)|(SPACE)"
+        },
+        {
+          "type": "PATTERN",
+          "value": "(spaces)|(SPACES)"
+        },
+        {
+          "type": "PATTERN",
+          "value": "(state)|(STATE)"
+        },
+        {
+          "type": "PATTERN",
+          "value": "(swap)|(SWAP)"
+        },
+        {
+          "type": "PATTERN",
+          "value": "(then)|(THEN)"
+        },
+        {
+          "type": "PATTERN",
+          "value": "(type)|(TYPE)"
+        },
+        {
+          "type": "PATTERN",
+          "value": "(u\\.)|(U\\.)"
+        },
+        {
+          "type": "PATTERN",
+          "value": "(u<)|(U<)"
+        },
+        {
+          "type": "PATTERN",
+          "value": "(um\\*)|(UM\\*)"
+        },
+        {
+          "type": "PATTERN",
+          "value": "(um\\/mod)|(UM\\/MOD)"
+        },
+        {
+          "type": "PATTERN",
+          "value": "(unloop)|(UNLOOP)"
+        },
+        {
+          "type": "PATTERN",
+          "value": "(until)|(UNTIL)"
+        },
+        {
+          "type": "PATTERN",
+          "value": "(variable)|(VARIABLE)"
+        },
+        {
+          "type": "PATTERN",
+          "value": "(while)|(WHILE)"
+        },
+        {
+          "type": "PATTERN",
+          "value": "(word)|(WORD)"
+        },
+        {
+          "type": "PATTERN",
+          "value": "(xor)|(XOR)"
+        },
+        {
+          "type": "PATTERN",
+          "value": "(\\[)|(\\[)"
+        },
+        {
+          "type": "PATTERN",
+          "value": "(\\['\\])|(\\['\\])"
+        },
+        {
+          "type": "PATTERN",
+          "value": "(\\[char\\])|(\\[CHAR\\])"
+        },
+        {
+          "type": "PATTERN",
+          "value": "(\\.\\(\")|(\\.\\(\")"
+        },
+        {
+          "type": "PATTERN",
+          "value": "(\\.r)|(\\.R)"
+        },
+        {
+          "type": "PATTERN",
+          "value": "(0<>)|(0<>)"
+        },
+        {
+          "type": "PATTERN",
+          "value": "(0>)|(0>)"
+        },
+        {
+          "type": "PATTERN",
+          "value": "(2>r)|(2>R)"
+        },
+        {
+          "type": "PATTERN",
+          "value": "(2r>)|(2R>)"
+        },
+        {
+          "type": "PATTERN",
+          "value": "(2r@)|(2R@)"
+        },
+        {
+          "type": "PATTERN",
+          "value": "(:noname)|(:NONAME)"
+        },
+        {
+          "type": "PATTERN",
+          "value": "(<>)|(<>)"
+        },
+        {
+          "type": "PATTERN",
+          "value": "(\\?do)|(\\?DO)"
+        },
+        {
+          "type": "PATTERN",
+          "value": "(action\\-of)|(ACTION\\-OF)"
+        },
+        {
+          "type": "PATTERN",
+          "value": "(again)|(AGAIN)"
+        },
+        {
+          "type": "PATTERN",
+          "value": "(buffer:)|(BUFFER:)"
+        },
+        {
+          "type": "PATTERN",
+          "value": "(c\")|(C\")"
+        },
+        {
+          "type": "PATTERN",
+          "value": "(case)|(CASE)"
+        },
+        {
+          "type": "PATTERN",
+          "value": "(compile,)|(COMPILE,)"
+        },
+        {
+          "type": "PATTERN",
+          "value": "(defer)|(DEFER)"
+        },
+        {
+          "type": "PATTERN",
+          "value": "(defer!)|(DEFER!)"
+        },
+        {
+          "type": "PATTERN",
+          "value": "(defer@)|(DEFER@)"
+        },
+        {
+          "type": "PATTERN",
+          "value": "(endcase)|(ENDCASE)"
+        },
+        {
+          "type": "PATTERN",
+          "value": "(endof)|(ENDOF)"
+        },
+        {
+          "type": "PATTERN",
+          "value": "(erase)|(ERASE)"
+        },
+        {
+          "type": "PATTERN",
+          "value": "(false)|(FALSE)"
+        },
+        {
+          "type": "PATTERN",
+          "value": "(hex)|(HEX)"
+        },
+        {
+          "type": "PATTERN",
+          "value": "(holds)|(HOLDS)"
+        },
+        {
+          "type": "PATTERN",
+          "value": "(is)|(IS)"
+        },
+        {
+          "type": "PATTERN",
+          "value": "(marker)|(MARKER)"
+        },
+        {
+          "type": "PATTERN",
+          "value": "(nip)|(NIP)"
+        },
+        {
+          "type": "PATTERN",
+          "value": "(of)|(OF)"
+        },
+        {
+          "type": "PATTERN",
+          "value": "(pad)|(PAD)"
+        },
+        {
+          "type": "PATTERN",
+          "value": "(parse)|(PARSE)"
+        },
+        {
+          "type": "PATTERN",
+          "value": "(parse\\-name)|(PARSE\\-NAME)"
+        },
+        {
+          "type": "PATTERN",
+          "value": "(pick)|(PICK)"
+        },
+        {
+          "type": "PATTERN",
+          "value": "(refill)|(REFILL)"
+        },
+        {
+          "type": "PATTERN",
+          "value": "(restore\\-input)|(RESTORE\\-INPUT)"
+        },
+        {
+          "type": "PATTERN",
+          "value": "(roll)|(ROLL)"
+        },
+        {
+          "type": "PATTERN",
+          "value": "(s\\\\\")|(S\\\\\")"
+        },
+        {
+          "type": "PATTERN",
+          "value": "(save\\-input)|(SAVE\\-INPUT)"
+        },
+        {
+          "type": "PATTERN",
+          "value": "(source\\-id)|(SOURCE\\-ID)"
+        },
+        {
+          "type": "PATTERN",
+          "value": "(to)|(TO)"
+        },
+        {
+          "type": "PATTERN",
+          "value": "(true)|(TRUE)"
+        },
+        {
+          "type": "PATTERN",
+          "value": "(tuck)|(TUCK)"
+        },
+        {
+          "type": "PATTERN",
+          "value": "(u\\.r)|(U\\.R)"
+        },
+        {
+          "type": "PATTERN",
+          "value": "(u>)|(U>)"
+        },
+        {
+          "type": "PATTERN",
+          "value": "(unused)|(UNUSED)"
+        },
+        {
+          "type": "PATTERN",
+          "value": "(value)|(VALUE)"
+        },
+        {
+          "type": "PATTERN",
+          "value": "(within)|(WITHIN)"
+        },
+        {
+          "type": "PATTERN",
+          "value": "(\\[compile\\])|(\\[COMPILE\\])"
+        },
+        {
+          "type": "PATTERN",
+          "value": "(\")|(\")"
+        }
+      ]
+    },
+    "operator": {
+      "type": "CHOICE",
+      "members": [
+        {
+          "type": "STRING",
+          "value": "="
+        },
+        {
+          "type": "STRING",
+          "value": "+"
+        },
+        {
+          "type": "STRING",
+          "value": "-"
+        },
+        {
+          "type": "STRING",
+          "value": "/"
+        },
+        {
+          "type": "STRING",
+          "value": "*"
+        },
+        {
+          "type": "STRING",
+          "value": "*/"
+        },
+        {
+          "type": "STRING",
+          "value": ">"
+        },
+        {
+          "type": "STRING",
+          "value": "<"
+        }
+      ]
+    },
+    "word": {
+      "type": "PATTERN",
+      "value": "[a-zA-Z0-9+\\[\\]\\\\\\-\\/!\\.\\?@\\#\\$%\\^&\\*\\(\\)]+"
+    },
+    "stack_effects": {
+      "type": "SEQ",
+      "members": [
+        {
+          "type": "SYMBOL",
+          "name": "lparen"
+        },
+        {
+          "type": "REPEAT",
+          "content": {
+            "type": "SYMBOL",
+            "name": "word"
+          }
+        },
+        {
+          "type": "SYMBOL",
+          "name": "stack_effect_sep"
+        },
+        {
+          "type": "REPEAT",
+          "content": {
+            "type": "SYMBOL",
+            "name": "word"
+          }
+        },
+        {
+          "type": "SYMBOL",
+          "name": "rparen"
+        }
+      ]
+    },
+    "lparen": {
+      "type": "STRING",
+      "value": "("
+    },
+    "rparen": {
+      "type": "STRING",
+      "value": ")"
+    },
+    "stack_effect_sep": {
+      "type": "STRING",
+      "value": "--"
+    },
+    "start_definition": {
+      "type": "PATTERN",
+      "value": ":"
+    },
+    "end_definition": {
+      "type": "PATTERN",
+      "value": ";"
+    }
+  },
+  "extras": [
+    {
+      "type": "PATTERN",
+      "value": "\\s"
+    }
+  ],
+  "conflicts": [],
+  "precedences": [],
+  "externals": [],
+  "inline": [],
+  "supertypes": []
+}
+

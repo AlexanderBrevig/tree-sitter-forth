@@ -1,0 +1,37 @@
+==================
+Define word
+==================
+
+: fib ( n -- fib )
+  0 1 rot 0 ?do  over + swap  loop drop ;
+  
+---
+
+(source_file
+  (word_definition
+    (start_definition)
+    (word)
+    (stack_effects
+      (lparen)
+      (word)
+      (stack_effect_sep)
+      (word)
+      (rparen))
+    (number)
+    (number)
+    (builtin
+      (core))
+    (number)
+    (builtin
+      (core))
+    (builtin
+      (core))
+    (builtin
+      (operator))
+    (builtin
+      (core))
+    (builtin
+      (core))
+    (builtin
+      (core))
+    (end_definition)))
