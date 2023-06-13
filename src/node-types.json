@@ -19,7 +19,22 @@
     }
   },
   {
+    "type": "comment",
+    "named": true,
+    "fields": {}
+  },
+  {
     "type": "core",
+    "named": true,
+    "fields": {}
+  },
+  {
+    "type": "end_definition",
+    "named": true,
+    "fields": {}
+  },
+  {
+    "type": "number",
     "named": true,
     "fields": {}
   },
@@ -64,6 +79,11 @@
     }
   },
   {
+    "type": "stack_effect_sep",
+    "named": true,
+    "fields": {}
+  },
+  {
     "type": "stack_effects",
     "named": true,
     "fields": {},
@@ -89,6 +109,11 @@
         }
       ]
     }
+  },
+  {
+    "type": "start_definition",
+    "named": true,
+    "fields": {}
   },
   {
     "type": "word_definition",
@@ -146,7 +171,19 @@
     "named": false
   },
   {
+    "type": "--",
+    "named": false
+  },
+  {
     "type": "/",
+    "named": false
+  },
+  {
+    "type": ":",
+    "named": false
+  },
+  {
+    "type": ";",
     "named": false
   },
   {
@@ -162,31 +199,11 @@
     "named": false
   },
   {
-    "type": "comment",
-    "named": true
-  },
-  {
-    "type": "end_definition",
-    "named": true
-  },
-  {
     "type": "lparen",
     "named": true
   },
   {
-    "type": "number",
-    "named": true
-  },
-  {
     "type": "rparen",
-    "named": true
-  },
-  {
-    "type": "stack_effect_sep",
-    "named": true
-  },
-  {
-    "type": "start_definition",
     "named": true
   },
   {

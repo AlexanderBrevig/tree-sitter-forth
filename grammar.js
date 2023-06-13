@@ -3,39 +3,51 @@ function escapeRegex(string) {
 }
 function caseInsensitive(keyword) {
   keyword = escapeRegex(keyword);
-  return new RegExp("(" + keyword.toLowerCase() + ")|(" + keyword.toUpperCase() + ")");
+  return new RegExp("([ ]+" + keyword.toLowerCase() + ")|(" + keyword.toUpperCase() + ")[ ]+");
 };
 module.exports = grammar({
   name: 'forth',
+
+  extras: $ => [
+    /\s/
+  ],
+
+  conflicts: $ => [
+    [$.builtin],
+    [$.word_definition],
+  ],
+
   rules: {
     source_file: $ => repeat($._definition),
 
     _definition: $ => choice(
-      // $.function_definition
-      $.comment,
-      $.string,
       $.word_definition,
+      $.string,
       $.number,
-      choice($.builtin, $.word)
+      choice($.builtin, $.word),
+      $.comment
     ),
 
-    comment: $ => /\\.*/,
+    comment: $ => choice(
+      /\\.*\n/,
+      /\(.*\)/,
+    ),
 
-    string: $ => /s".*"/,
+    string: $ => /s"[ ]+.*"/,
 
-    word_definition: $ => seq(
+    word_definition: $ => prec(5, seq(
       $.start_definition,
       $.word,
-      optional($.stack_effects),
-      repeat(choice($.comment, $.number, choice($.builtin, $.word))),
+      prec(4, optional($.stack_effects)),
+      repeat1(choice($.number, choice($.builtin, $.word), $.comment)),
       $.end_definition
-    ),
-    number: $ => /\d+/,
+    )),
+    number: $ => prec(4, /('\w')|(0[xX][0-9a-fA-F]+)|(\$[0-9a-fA-F]+)|(%[01]+)|(&\d+)|\d+/),
 
-    builtin: $ => choice(
+    builtin: $ => prec(5, choice(
       $.core,
-      $.operator
-    ),
+      $.operator,
+    )),
     core: $ => choice(
       caseInsensitive("include"),
       caseInsensitive("!"),
@@ -220,20 +232,20 @@ module.exports = grammar({
       ">",
       "<"
     ),
-    word: $ => /[a-zA-Z0-9+\[\]\\\-\/!\.\?@\#\$%\^&\*\(\)]+/,
+    word: $ => /\S+/,
     // word: $ => /[^():; ]+/,
 
-    stack_effects: $ => seq(
+    stack_effects: $ => prec(4, seq(
       $.lparen,
       repeat($.word),
       $.stack_effect_sep,
       repeat($.word),
       $.rparen
-    ),
-    lparen: $ => "(",
-    rparen: $ => ")",
-    stack_effect_sep: $ => "--",
-    start_definition: $ => /:/,
-    end_definition: $ => /;/
+    )),
+    lparen: $ => /\(/,
+    rparen: $ => /\)/,
+    stack_effect_sep: $ => prec(3, "--"),
+    start_definition: $ => prec(3, ":"),
+    end_definition: $ => prec(3, ";"),
   }
 });

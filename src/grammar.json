@@ -13,15 +13,11 @@
       "members": [
         {
           "type": "SYMBOL",
-          "name": "comment"
+          "name": "word_definition"
         },
         {
           "type": "SYMBOL",
           "name": "string"
-        },
-        {
-          "type": "SYMBOL",
-          "name": "word_definition"
         },
         {
           "type": "SYMBOL",
@@ -39,782 +35,811 @@
               "name": "word"
             }
           ]
+        },
+        {
+          "type": "SYMBOL",
+          "name": "comment"
         }
       ]
     },
     "comment": {
-      "type": "PATTERN",
-      "value": "\\\\.*"
-    },
-    "string": {
-      "type": "PATTERN",
-      "value": "s\".*\""
-    },
-    "word_definition": {
-      "type": "SEQ",
-      "members": [
-        {
-          "type": "SYMBOL",
-          "name": "start_definition"
-        },
-        {
-          "type": "SYMBOL",
-          "name": "word"
-        },
-        {
-          "type": "CHOICE",
-          "members": [
-            {
-              "type": "SYMBOL",
-              "name": "stack_effects"
-            },
-            {
-              "type": "BLANK"
-            }
-          ]
-        },
-        {
-          "type": "REPEAT",
-          "content": {
-            "type": "CHOICE",
-            "members": [
-              {
-                "type": "SYMBOL",
-                "name": "comment"
-              },
-              {
-                "type": "SYMBOL",
-                "name": "number"
-              },
-              {
-                "type": "CHOICE",
-                "members": [
-                  {
-                    "type": "SYMBOL",
-                    "name": "builtin"
-                  },
-                  {
-                    "type": "SYMBOL",
-                    "name": "word"
-                  }
-                ]
-              }
-            ]
-          }
-        },
-        {
-          "type": "SYMBOL",
-          "name": "end_definition"
-        }
-      ]
-    },
-    "number": {
-      "type": "PATTERN",
-      "value": "\\d+"
-    },
-    "builtin": {
       "type": "CHOICE",
       "members": [
         {
-          "type": "SYMBOL",
-          "name": "core"
+          "type": "PATTERN",
+          "value": "\\\\.*\\n"
         },
         {
-          "type": "SYMBOL",
-          "name": "operator"
+          "type": "PATTERN",
+          "value": "\\(.*\\)"
         }
       ]
+    },
+    "string": {
+      "type": "PATTERN",
+      "value": "s\"[ ]+.*\""
+    },
+    "word_definition": {
+      "type": "PREC",
+      "value": 5,
+      "content": {
+        "type": "SEQ",
+        "members": [
+          {
+            "type": "SYMBOL",
+            "name": "start_definition"
+          },
+          {
+            "type": "SYMBOL",
+            "name": "word"
+          },
+          {
+            "type": "PREC",
+            "value": 4,
+            "content": {
+              "type": "CHOICE",
+              "members": [
+                {
+                  "type": "SYMBOL",
+                  "name": "stack_effects"
+                },
+                {
+                  "type": "BLANK"
+                }
+              ]
+            }
+          },
+          {
+            "type": "REPEAT1",
+            "content": {
+              "type": "CHOICE",
+              "members": [
+                {
+                  "type": "SYMBOL",
+                  "name": "number"
+                },
+                {
+                  "type": "CHOICE",
+                  "members": [
+                    {
+                      "type": "SYMBOL",
+                      "name": "builtin"
+                    },
+                    {
+                      "type": "SYMBOL",
+                      "name": "word"
+                    }
+                  ]
+                },
+                {
+                  "type": "SYMBOL",
+                  "name": "comment"
+                }
+              ]
+            }
+          },
+          {
+            "type": "SYMBOL",
+            "name": "end_definition"
+          }
+        ]
+      }
+    },
+    "number": {
+      "type": "PREC",
+      "value": 4,
+      "content": {
+        "type": "PATTERN",
+        "value": "('\\w')|(0[xX][0-9a-fA-F]+)|(\\$[0-9a-fA-F]+)|(%[01]+)|(&\\d+)|\\d+"
+      }
+    },
+    "builtin": {
+      "type": "PREC",
+      "value": 5,
+      "content": {
+        "type": "CHOICE",
+        "members": [
+          {
+            "type": "SYMBOL",
+            "name": "core"
+          },
+          {
+            "type": "SYMBOL",
+            "name": "operator"
+          }
+        ]
+      }
     },
     "core": {
       "type": "CHOICE",
       "members": [
         {
           "type": "PATTERN",
-          "value": "(include)|(INCLUDE)"
+          "value": "([ ]+include)|(INCLUDE)[ ]+"
         },
         {
           "type": "PATTERN",
-          "value": "(!)|(!)"
+          "value": "([ ]+!)|(!)[ ]+"
         },
         {
           "type": "PATTERN",
-          "value": "(#)|(#)"
+          "value": "([ ]+#)|(#)[ ]+"
         },
         {
           "type": "PATTERN",
-          "value": "(#>)|(#>)"
+          "value": "([ ]+#>)|(#>)[ ]+"
         },
         {
           "type": "PATTERN",
-          "value": "(#s)|(#S)"
+          "value": "([ ]+#s)|(#S)[ ]+"
         },
         {
           "type": "PATTERN",
-          "value": "(')|(')"
+          "value": "([ ]+')|(')[ ]+"
         },
         {
           "type": "PATTERN",
-          "value": "(\\*\\/mod)|(\\*\\/MOD)"
+          "value": "([ ]+\\*\\/mod)|(\\*\\/MOD)[ ]+"
         },
         {
           "type": "PATTERN",
-          "value": "(\\+!)|(\\+!)"
+          "value": "([ ]+\\+!)|(\\+!)[ ]+"
         },
         {
           "type": "PATTERN",
-          "value": "(\\+loop)|(\\+LOOP)"
+          "value": "([ ]+\\+loop)|(\\+LOOP)[ ]+"
         },
         {
           "type": "PATTERN",
-          "value": "(,)|(,)"
+          "value": "([ ]+,)|(,)[ ]+"
         },
         {
           "type": "PATTERN",
-          "value": "(\\.)|(\\.)"
+          "value": "([ ]+\\.)|(\\.)[ ]+"
         },
         {
           "type": "PATTERN",
-          "value": "(\\.\")|(\\.\")"
+          "value": "([ ]+\\.\")|(\\.\")[ ]+"
         },
         {
           "type": "PATTERN",
-          "value": "(\\/mod)|(\\/MOD)"
+          "value": "([ ]+\\/mod)|(\\/MOD)[ ]+"
         },
         {
           "type": "PATTERN",
-          "value": "(0<)|(0<)"
+          "value": "([ ]+0<)|(0<)[ ]+"
         },
         {
           "type": "PATTERN",
-          "value": "(0=)|(0=)"
+          "value": "([ ]+0=)|(0=)[ ]+"
         },
         {
           "type": "PATTERN",
-          "value": "(1\\+)|(1\\+)"
+          "value": "([ ]+1\\+)|(1\\+)[ ]+"
         },
         {
           "type": "PATTERN",
-          "value": "(1\\-)|(1\\-)"
+          "value": "([ ]+1\\-)|(1\\-)[ ]+"
         },
         {
           "type": "PATTERN",
-          "value": "(2!)|(2!)"
+          "value": "([ ]+2!)|(2!)[ ]+"
         },
         {
           "type": "PATTERN",
-          "value": "(2\\*)|(2\\*)"
+          "value": "([ ]+2\\*)|(2\\*)[ ]+"
         },
         {
           "type": "PATTERN",
-          "value": "(2\\/)|(2\\/)"
+          "value": "([ ]+2\\/)|(2\\/)[ ]+"
         },
         {
           "type": "PATTERN",
-          "value": "(2@)|(2@)"
+          "value": "([ ]+2@)|(2@)[ ]+"
         },
         {
           "type": "PATTERN",
-          "value": "(2drop)|(2DROP)"
+          "value": "([ ]+2drop)|(2DROP)[ ]+"
         },
         {
           "type": "PATTERN",
-          "value": "(2dup)|(2DUP)"
+          "value": "([ ]+2dup)|(2DUP)[ ]+"
         },
         {
           "type": "PATTERN",
-          "value": "(2over)|(2OVER)"
+          "value": "([ ]+2over)|(2OVER)[ ]+"
         },
         {
           "type": "PATTERN",
-          "value": "(2swap)|(2SWAP)"
+          "value": "([ ]+2swap)|(2SWAP)[ ]+"
         },
         {
           "type": "PATTERN",
-          "value": "(<#)|(<#)"
+          "value": "([ ]+<#)|(<#)[ ]+"
         },
         {
           "type": "PATTERN",
-          "value": "(>body)|(>BODY)"
+          "value": "([ ]+>body)|(>BODY)[ ]+"
         },
         {
           "type": "PATTERN",
-          "value": "(>in)|(>IN)"
+          "value": "([ ]+>in)|(>IN)[ ]+"
         },
         {
           "type": "PATTERN",
-          "value": "(>number)|(>NUMBER)"
+          "value": "([ ]+>number)|(>NUMBER)[ ]+"
         },
         {
           "type": "PATTERN",
-          "value": "(>r)|(>R)"
+          "value": "([ ]+>r)|(>R)[ ]+"
         },
         {
           "type": "PATTERN",
-          "value": "(\\?dup)|(\\?DUP)"
+          "value": "([ ]+\\?dup)|(\\?DUP)[ ]+"
         },
         {
           "type": "PATTERN",
-          "value": "(@)|(@)"
+          "value": "([ ]+@)|(@)[ ]+"
         },
         {
           "type": "PATTERN",
-          "value": "(abort)|(ABORT)"
+          "value": "([ ]+abort)|(ABORT)[ ]+"
         },
         {
           "type": "PATTERN",
-          "value": "(abort\")|(ABORT\")"
+          "value": "([ ]+abort\")|(ABORT\")[ ]+"
         },
         {
           "type": "PATTERN",
-          "value": "(abs)|(ABS)"
+          "value": "([ ]+abs)|(ABS)[ ]+"
         },
         {
           "type": "PATTERN",
-          "value": "(accept)|(ACCEPT)"
+          "value": "([ ]+accept)|(ACCEPT)[ ]+"
         },
         {
           "type": "PATTERN",
-          "value": "(align)|(ALIGN)"
+          "value": "([ ]+align)|(ALIGN)[ ]+"
         },
         {
           "type": "PATTERN",
-          "value": "(aligned)|(ALIGNED)"
+          "value": "([ ]+aligned)|(ALIGNED)[ ]+"
         },
         {
           "type": "PATTERN",
-          "value": "(allot)|(ALLOT)"
+          "value": "([ ]+allot)|(ALLOT)[ ]+"
         },
         {
           "type": "PATTERN",
-          "value": "(and)|(AND)"
+          "value": "([ ]+and)|(AND)[ ]+"
         },
         {
           "type": "PATTERN",
-          "value": "(base)|(BASE)"
+          "value": "([ ]+base)|(BASE)[ ]+"
         },
         {
           "type": "PATTERN",
-          "value": "(begin)|(BEGIN)"
+          "value": "([ ]+begin)|(BEGIN)[ ]+"
         },
         {
           "type": "PATTERN",
-          "value": "(bl)|(BL)"
+          "value": "([ ]+bl)|(BL)[ ]+"
         },
         {
           "type": "PATTERN",
-          "value": "(c!)|(C!)"
+          "value": "([ ]+c!)|(C!)[ ]+"
         },
         {
           "type": "PATTERN",
-          "value": "(c,)|(C,)"
+          "value": "([ ]+c,)|(C,)[ ]+"
         },
         {
           "type": "PATTERN",
-          "value": "(c@)|(C@)"
+          "value": "([ ]+c@)|(C@)[ ]+"
         },
         {
           "type": "PATTERN",
-          "value": "(cell\\+)|(CELL\\+)"
+          "value": "([ ]+cell\\+)|(CELL\\+)[ ]+"
         },
         {
           "type": "PATTERN",
-          "value": "(cells)|(CELLS)"
+          "value": "([ ]+cells)|(CELLS)[ ]+"
         },
         {
           "type": "PATTERN",
-          "value": "(char)|(CHAR)"
+          "value": "([ ]+char)|(CHAR)[ ]+"
         },
         {
           "type": "PATTERN",
-          "value": "(char\\+)|(CHAR\\+)"
+          "value": "([ ]+char\\+)|(CHAR\\+)[ ]+"
         },
         {
           "type": "PATTERN",
-          "value": "(chars)|(CHARS)"
+          "value": "([ ]+chars)|(CHARS)[ ]+"
         },
         {
           "type": "PATTERN",
-          "value": "(constant)|(CONSTANT)"
+          "value": "([ ]+constant)|(CONSTANT)[ ]+"
         },
         {
           "type": "PATTERN",
-          "value": "(count)|(COUNT)"
+          "value": "([ ]+count)|(COUNT)[ ]+"
         },
         {
           "type": "PATTERN",
-          "value": "(cr)|(CR)"
+          "value": "([ ]+cr)|(CR)[ ]+"
         },
         {
           "type": "PATTERN",
-          "value": "(create)|(CREATE)"
+          "value": "([ ]+create)|(CREATE)[ ]+"
         },
         {
           "type": "PATTERN",
-          "value": "(decimal)|(DECIMAL)"
+          "value": "([ ]+decimal)|(DECIMAL)[ ]+"
         },
         {
           "type": "PATTERN",
-          "value": "(depth)|(DEPTH)"
+          "value": "([ ]+depth)|(DEPTH)[ ]+"
         },
         {
           "type": "PATTERN",
-          "value": "(do)|(DO)"
+          "value": "([ ]+do)|(DO)[ ]+"
         },
         {
           "type": "PATTERN",
-          "value": "(does>)|(DOES>)"
+          "value": "([ ]+does>)|(DOES>)[ ]+"
         },
         {
           "type": "PATTERN",
-          "value": "(drop)|(DROP)"
+          "value": "([ ]+drop)|(DROP)[ ]+"
         },
         {
           "type": "PATTERN",
-          "value": "(dup)|(DUP)"
+          "value": "([ ]+dup)|(DUP)[ ]+"
         },
         {
           "type": "PATTERN",
-          "value": "(else)|(ELSE)"
+          "value": "([ ]+else)|(ELSE)[ ]+"
         },
         {
           "type": "PATTERN",
-          "value": "(emit)|(EMIT)"
+          "value": "([ ]+emit)|(EMIT)[ ]+"
         },
         {
           "type": "PATTERN",
-          "value": "(environment\\?)|(ENVIRONMENT\\?)"
+          "value": "([ ]+environment\\?)|(ENVIRONMENT\\?)[ ]+"
         },
         {
           "type": "PATTERN",
-          "value": "(evaluate)|(EVALUATE)"
+          "value": "([ ]+evaluate)|(EVALUATE)[ ]+"
         },
         {
           "type": "PATTERN",
-          "value": "(execute)|(EXECUTE)"
+          "value": "([ ]+execute)|(EXECUTE)[ ]+"
         },
         {
           "type": "PATTERN",
-          "value": "(exit)|(EXIT)"
+          "value": "([ ]+exit)|(EXIT)[ ]+"
         },
         {
           "type": "PATTERN",
-          "value": "(fill)|(FILL)"
+          "value": "([ ]+fill)|(FILL)[ ]+"
         },
         {
           "type": "PATTERN",
-          "value": "(find)|(FIND)"
+          "value": "([ ]+find)|(FIND)[ ]+"
         },
         {
           "type": "PATTERN",
-          "value": "(fm\\/mod)|(FM\\/MOD)"
+          "value": "([ ]+fm\\/mod)|(FM\\/MOD)[ ]+"
         },
         {
           "type": "PATTERN",
-          "value": "(here)|(HERE)"
+          "value": "([ ]+here)|(HERE)[ ]+"
         },
         {
           "type": "PATTERN",
-          "value": "(hold)|(HOLD)"
+          "value": "([ ]+hold)|(HOLD)[ ]+"
         },
         {
           "type": "PATTERN",
-          "value": "(i)|(I)"
+          "value": "([ ]+i)|(I)[ ]+"
         },
         {
           "type": "PATTERN",
-          "value": "(if)|(IF)"
+          "value": "([ ]+if)|(IF)[ ]+"
         },
         {
           "type": "PATTERN",
-          "value": "(immediate)|(IMMEDIATE)"
+          "value": "([ ]+immediate)|(IMMEDIATE)[ ]+"
         },
         {
           "type": "PATTERN",
-          "value": "(invert)|(INVERT)"
+          "value": "([ ]+invert)|(INVERT)[ ]+"
         },
         {
           "type": "PATTERN",
-          "value": "(j)|(J)"
+          "value": "([ ]+j)|(J)[ ]+"
         },
         {
           "type": "PATTERN",
-          "value": "(key)|(KEY)"
+          "value": "([ ]+key)|(KEY)[ ]+"
         },
         {
           "type": "PATTERN",
-          "value": "(leave)|(LEAVE)"
+          "value": "([ ]+leave)|(LEAVE)[ ]+"
         },
         {
           "type": "PATTERN",
-          "value": "(literal)|(LITERAL)"
+          "value": "([ ]+literal)|(LITERAL)[ ]+"
         },
         {
           "type": "PATTERN",
-          "value": "(loop)|(LOOP)"
+          "value": "([ ]+loop)|(LOOP)[ ]+"
         },
         {
           "type": "PATTERN",
-          "value": "(lshift)|(LSHIFT)"
+          "value": "([ ]+lshift)|(LSHIFT)[ ]+"
         },
         {
           "type": "PATTERN",
-          "value": "(m\\*)|(M\\*)"
+          "value": "([ ]+m\\*)|(M\\*)[ ]+"
         },
         {
           "type": "PATTERN",
-          "value": "(max)|(MAX)"
+          "value": "([ ]+max)|(MAX)[ ]+"
         },
         {
           "type": "PATTERN",
-          "value": "(min)|(MIN)"
+          "value": "([ ]+min)|(MIN)[ ]+"
         },
         {
           "type": "PATTERN",
-          "value": "(mod)|(MOD)"
+          "value": "([ ]+mod)|(MOD)[ ]+"
         },
         {
           "type": "PATTERN",
-          "value": "(move)|(MOVE)"
+          "value": "([ ]+move)|(MOVE)[ ]+"
         },
         {
           "type": "PATTERN",
-          "value": "(negate)|(NEGATE)"
+          "value": "([ ]+negate)|(NEGATE)[ ]+"
         },
         {
           "type": "PATTERN",
-          "value": "(or)|(OR)"
+          "value": "([ ]+or)|(OR)[ ]+"
         },
         {
           "type": "PATTERN",
-          "value": "(over)|(OVER)"
+          "value": "([ ]+over)|(OVER)[ ]+"
         },
         {
           "type": "PATTERN",
-          "value": "(postpone)|(POSTPONE)"
+          "value": "([ ]+postpone)|(POSTPONE)[ ]+"
         },
         {
           "type": "PATTERN",
-          "value": "(quit)|(QUIT)"
+          "value": "([ ]+quit)|(QUIT)[ ]+"
         },
         {
           "type": "PATTERN",
-          "value": "(r>)|(R>)"
+          "value": "([ ]+r>)|(R>)[ ]+"
         },
         {
           "type": "PATTERN",
-          "value": "(r@)|(R@)"
+          "value": "([ ]+r@)|(R@)[ ]+"
         },
         {
           "type": "PATTERN",
-          "value": "(recurse)|(RECURSE)"
+          "value": "([ ]+recurse)|(RECURSE)[ ]+"
         },
         {
           "type": "PATTERN",
-          "value": "(repeat)|(REPEAT)"
+          "value": "([ ]+repeat)|(REPEAT)[ ]+"
         },
         {
           "type": "PATTERN",
-          "value": "(rot)|(ROT)"
+          "value": "([ ]+rot)|(ROT)[ ]+"
         },
         {
           "type": "PATTERN",
-          "value": "(rshift)|(RSHIFT)"
+          "value": "([ ]+rshift)|(RSHIFT)[ ]+"
         },
         {
           "type": "PATTERN",
-          "value": "(s\")|(S\")"
+          "value": "([ ]+s\")|(S\")[ ]+"
         },
         {
           "type": "PATTERN",
-          "value": "(s>d)|(S>D)"
+          "value": "([ ]+s>d)|(S>D)[ ]+"
         },
         {
           "type": "PATTERN",
-          "value": "(sign)|(SIGN)"
+          "value": "([ ]+sign)|(SIGN)[ ]+"
         },
         {
           "type": "PATTERN",
-          "value": "(sm\\/rem)|(SM\\/REM)"
+          "value": "([ ]+sm\\/rem)|(SM\\/REM)[ ]+"
         },
         {
           "type": "PATTERN",
-          "value": "(source)|(SOURCE)"
+          "value": "([ ]+source)|(SOURCE)[ ]+"
         },
         {
           "type": "PATTERN",
-          "value": "(space)|(SPACE)"
+          "value": "([ ]+space)|(SPACE)[ ]+"
         },
         {
           "type": "PATTERN",
-          "value": "(spaces)|(SPACES)"
+          "value": "([ ]+spaces)|(SPACES)[ ]+"
         },
         {
           "type": "PATTERN",
-          "value": "(state)|(STATE)"
+          "value": "([ ]+state)|(STATE)[ ]+"
         },
         {
           "type": "PATTERN",
-          "value": "(swap)|(SWAP)"
+          "value": "([ ]+swap)|(SWAP)[ ]+"
         },
         {
           "type": "PATTERN",
-          "value": "(then)|(THEN)"
+          "value": "([ ]+then)|(THEN)[ ]+"
         },
         {
           "type": "PATTERN",
-          "value": "(type)|(TYPE)"
+          "value": "([ ]+type)|(TYPE)[ ]+"
         },
         {
           "type": "PATTERN",
-          "value": "(u\\.)|(U\\.)"
+          "value": "([ ]+u\\.)|(U\\.)[ ]+"
         },
         {
           "type": "PATTERN",
-          "value": "(u<)|(U<)"
+          "value": "([ ]+u<)|(U<)[ ]+"
         },
         {
           "type": "PATTERN",
-          "value": "(um\\*)|(UM\\*)"
+          "value": "([ ]+um\\*)|(UM\\*)[ ]+"
         },
         {
           "type": "PATTERN",
-          "value": "(um\\/mod)|(UM\\/MOD)"
+          "value": "([ ]+um\\/mod)|(UM\\/MOD)[ ]+"
         },
         {
           "type": "PATTERN",
-          "value": "(unloop)|(UNLOOP)"
+          "value": "([ ]+unloop)|(UNLOOP)[ ]+"
         },
         {
           "type": "PATTERN",
-          "value": "(until)|(UNTIL)"
+          "value": "([ ]+until)|(UNTIL)[ ]+"
         },
         {
           "type": "PATTERN",
-          "value": "(variable)|(VARIABLE)"
+          "value": "([ ]+variable)|(VARIABLE)[ ]+"
         },
         {
           "type": "PATTERN",
-          "value": "(while)|(WHILE)"
+          "value": "([ ]+while)|(WHILE)[ ]+"
         },
         {
           "type": "PATTERN",
-          "value": "(word)|(WORD)"
+          "value": "([ ]+word)|(WORD)[ ]+"
         },
         {
           "type": "PATTERN",
-          "value": "(xor)|(XOR)"
+          "value": "([ ]+xor)|(XOR)[ ]+"
         },
         {
           "type": "PATTERN",
-          "value": "(\\[)|(\\[)"
+          "value": "([ ]+\\[)|(\\[)[ ]+"
         },
         {
           "type": "PATTERN",
-          "value": "(\\['\\])|(\\['\\])"
+          "value": "([ ]+\\['\\])|(\\['\\])[ ]+"
         },
         {
           "type": "PATTERN",
-          "value": "(\\[char\\])|(\\[CHAR\\])"
+          "value": "([ ]+\\[char\\])|(\\[CHAR\\])[ ]+"
         },
         {
           "type": "PATTERN",
-          "value": "(\\.\\(\")|(\\.\\(\")"
+          "value": "([ ]+\\.\\(\")|(\\.\\(\")[ ]+"
         },
         {
           "type": "PATTERN",
-          "value": "(\\.r)|(\\.R)"
+          "value": "([ ]+\\.r)|(\\.R)[ ]+"
         },
         {
           "type": "PATTERN",
-          "value": "(\\.s)|(\\.S)"
+          "value": "([ ]+\\.s)|(\\.S)[ ]+"
         },
         {
           "type": "PATTERN",
-          "value": "(0<>)|(0<>)"
+          "value": "([ ]+0<>)|(0<>)[ ]+"
         },
         {
           "type": "PATTERN",
-          "value": "(0>)|(0>)"
+          "value": "([ ]+0>)|(0>)[ ]+"
         },
         {
           "type": "PATTERN",
-          "value": "(2>r)|(2>R)"
+          "value": "([ ]+2>r)|(2>R)[ ]+"
         },
         {
           "type": "PATTERN",
-          "value": "(2r>)|(2R>)"
+          "value": "([ ]+2r>)|(2R>)[ ]+"
         },
         {
           "type": "PATTERN",
-          "value": "(2r@)|(2R@)"
+          "value": "([ ]+2r@)|(2R@)[ ]+"
         },
         {
           "type": "PATTERN",
-          "value": "(:noname)|(:NONAME)"
+          "value": "([ ]+:noname)|(:NONAME)[ ]+"
         },
         {
           "type": "PATTERN",
-          "value": "(<>)|(<>)"
+          "value": "([ ]+<>)|(<>)[ ]+"
         },
         {
           "type": "PATTERN",
-          "value": "(\\?do)|(\\?DO)"
+          "value": "([ ]+\\?do)|(\\?DO)[ ]+"
         },
         {
           "type": "PATTERN",
-          "value": "(action\\-of)|(ACTION\\-OF)"
+          "value": "([ ]+action\\-of)|(ACTION\\-OF)[ ]+"
         },
         {
           "type": "PATTERN",
-          "value": "(again)|(AGAIN)"
+          "value": "([ ]+again)|(AGAIN)[ ]+"
         },
         {
           "type": "PATTERN",
-          "value": "(buffer:)|(BUFFER:)"
+          "value": "([ ]+buffer:)|(BUFFER:)[ ]+"
         },
         {
           "type": "PATTERN",
-          "value": "(c\")|(C\")"
+          "value": "([ ]+c\")|(C\")[ ]+"
         },
         {
           "type": "PATTERN",
-          "value": "(case)|(CASE)"
+          "value": "([ ]+case)|(CASE)[ ]+"
         },
         {
           "type": "PATTERN",
-          "value": "(compile,)|(COMPILE,)"
+          "value": "([ ]+compile,)|(COMPILE,)[ ]+"
         },
         {
           "type": "PATTERN",
-          "value": "(defer)|(DEFER)"
+          "value": "([ ]+defer)|(DEFER)[ ]+"
         },
         {
           "type": "PATTERN",
-          "value": "(defer!)|(DEFER!)"
+          "value": "([ ]+defer!)|(DEFER!)[ ]+"
         },
         {
           "type": "PATTERN",
-          "value": "(defer@)|(DEFER@)"
+          "value": "([ ]+defer@)|(DEFER@)[ ]+"
         },
         {
           "type": "PATTERN",
-          "value": "(endcase)|(ENDCASE)"
+          "value": "([ ]+endcase)|(ENDCASE)[ ]+"
         },
         {
           "type": "PATTERN",
-          "value": "(endof)|(ENDOF)"
+          "value": "([ ]+endof)|(ENDOF)[ ]+"
         },
         {
           "type": "PATTERN",
-          "value": "(erase)|(ERASE)"
+          "value": "([ ]+erase)|(ERASE)[ ]+"
         },
         {
           "type": "PATTERN",
-          "value": "(false)|(FALSE)"
+          "value": "([ ]+false)|(FALSE)[ ]+"
         },
         {
           "type": "PATTERN",
-          "value": "(hex)|(HEX)"
+          "value": "([ ]+hex)|(HEX)[ ]+"
         },
         {
           "type": "PATTERN",
-          "value": "(holds)|(HOLDS)"
+          "value": "([ ]+holds)|(HOLDS)[ ]+"
         },
         {
           "type": "PATTERN",
-          "value": "(is)|(IS)"
+          "value": "([ ]+is)|(IS)[ ]+"
         },
         {
           "type": "PATTERN",
-          "value": "(marker)|(MARKER)"
+          "value": "([ ]+marker)|(MARKER)[ ]+"
         },
         {
           "type": "PATTERN",
-          "value": "(nip)|(NIP)"
+          "value": "([ ]+nip)|(NIP)[ ]+"
         },
         {
           "type": "PATTERN",
-          "value": "(of)|(OF)"
+          "value": "([ ]+of)|(OF)[ ]+"
         },
         {
           "type": "PATTERN",
-          "value": "(pad)|(PAD)"
+          "value": "([ ]+pad)|(PAD)[ ]+"
         },
         {
           "type": "PATTERN",
-          "value": "(parse)|(PARSE)"
+          "value": "([ ]+parse)|(PARSE)[ ]+"
         },
         {
           "type": "PATTERN",
-          "value": "(parse\\-name)|(PARSE\\-NAME)"
+          "value": "([ ]+parse\\-name)|(PARSE\\-NAME)[ ]+"
         },
         {
           "type": "PATTERN",
-          "value": "(pick)|(PICK)"
+          "value": "([ ]+pick)|(PICK)[ ]+"
         },
         {
           "type": "PATTERN",
-          "value": "(refill)|(REFILL)"
+          "value": "([ ]+refill)|(REFILL)[ ]+"
         },
         {
           "type": "PATTERN",
-          "value": "(restore\\-input)|(RESTORE\\-INPUT)"
+          "value": "([ ]+restore\\-input)|(RESTORE\\-INPUT)[ ]+"
         },
         {
           "type": "PATTERN",
-          "value": "(roll)|(ROLL)"
+          "value": "([ ]+roll)|(ROLL)[ ]+"
         },
         {
           "type": "PATTERN",
-          "value": "(s\\\\\")|(S\\\\\")"
+          "value": "([ ]+s\\\\\")|(S\\\\\")[ ]+"
         },
         {
           "type": "PATTERN",
-          "value": "(save\\-input)|(SAVE\\-INPUT)"
+          "value": "([ ]+save\\-input)|(SAVE\\-INPUT)[ ]+"
         },
         {
           "type": "PATTERN",
-          "value": "(source\\-id)|(SOURCE\\-ID)"
+          "value": "([ ]+source\\-id)|(SOURCE\\-ID)[ ]+"
         },
         {
           "type": "PATTERN",
-          "value": "(to)|(TO)"
+          "value": "([ ]+to)|(TO)[ ]+"
         },
         {
           "type": "PATTERN",
-          "value": "(true)|(TRUE)"
+          "value": "([ ]+true)|(TRUE)[ ]+"
         },
         {
           "type": "PATTERN",
-          "value": "(tuck)|(TUCK)"
+          "value": "([ ]+tuck)|(TUCK)[ ]+"
         },
         {
           "type": "PATTERN",
-          "value": "(u\\.r)|(U\\.R)"
+          "value": "([ ]+u\\.r)|(U\\.R)[ ]+"
         },
         {
           "type": "PATTERN",
-          "value": "(u>)|(U>)"
+          "value": "([ ]+u>)|(U>)[ ]+"
         },
         {
           "type": "PATTERN",
-          "value": "(unused)|(UNUSED)"
+          "value": "([ ]+unused)|(UNUSED)[ ]+"
         },
         {
           "type": "PATTERN",
-          "value": "(value)|(VALUE)"
+          "value": "([ ]+value)|(VALUE)[ ]+"
         },
         {
           "type": "PATTERN",
-          "value": "(within)|(WITHIN)"
+          "value": "([ ]+within)|(WITHIN)[ ]+"
         },
         {
           "type": "PATTERN",
-          "value": "(\\[compile\\])|(\\[COMPILE\\])"
+          "value": "([ ]+\\[compile\\])|(\\[COMPILE\\])[ ]+"
         },
         {
           "type": "PATTERN",
-          "value": "(\")|(\")"
+          "value": "([ ]+\")|(\")[ ]+"
         }
       ]
     },
@@ -857,58 +882,74 @@
     },
     "word": {
       "type": "PATTERN",
-      "value": "[a-zA-Z0-9+\\[\\]\\\\\\-\\/!\\.\\?@\\#\\$%\\^&\\*\\(\\)]+"
+      "value": "\\S+"
     },
     "stack_effects": {
-      "type": "SEQ",
-      "members": [
-        {
-          "type": "SYMBOL",
-          "name": "lparen"
-        },
-        {
-          "type": "REPEAT",
-          "content": {
+      "type": "PREC",
+      "value": 4,
+      "content": {
+        "type": "SEQ",
+        "members": [
+          {
             "type": "SYMBOL",
-            "name": "word"
-          }
-        },
-        {
-          "type": "SYMBOL",
-          "name": "stack_effect_sep"
-        },
-        {
-          "type": "REPEAT",
-          "content": {
+            "name": "lparen"
+          },
+          {
+            "type": "REPEAT",
+            "content": {
+              "type": "SYMBOL",
+              "name": "word"
+            }
+          },
+          {
             "type": "SYMBOL",
-            "name": "word"
+            "name": "stack_effect_sep"
+          },
+          {
+            "type": "REPEAT",
+            "content": {
+              "type": "SYMBOL",
+              "name": "word"
+            }
+          },
+          {
+            "type": "SYMBOL",
+            "name": "rparen"
           }
-        },
-        {
-          "type": "SYMBOL",
-          "name": "rparen"
-        }
-      ]
+        ]
+      }
     },
     "lparen": {
-      "type": "STRING",
-      "value": "("
+      "type": "PATTERN",
+      "value": "\\("
     },
     "rparen": {
-      "type": "STRING",
-      "value": ")"
+      "type": "PATTERN",
+      "value": "\\)"
     },
     "stack_effect_sep": {
-      "type": "STRING",
-      "value": "--"
+      "type": "PREC",
+      "value": 3,
+      "content": {
+        "type": "STRING",
+        "value": "--"
+      }
     },
     "start_definition": {
-      "type": "PATTERN",
-      "value": ":"
+      "type": "PREC",
+      "value": 3,
+      "content": {
+        "type": "STRING",
+        "value": ":"
+      }
     },
     "end_definition": {
-      "type": "PATTERN",
-      "value": ";"
+      "type": "PREC",
+      "value": 3,
+      "content": {
+        "type": "STRING",
+        "value": ";"
+      }
     }
   },
   "extras": [
@@ -917,7 +958,14 @@
       "value": "\\s"
     }
   ],
-  "conflicts": [],
+  "conflicts": [
+    [
+      "builtin"
+    ],
+    [
+      "word_definition"
+    ]
+  ],
   "precedences": [],
   "externals": [],
   "inline": [],

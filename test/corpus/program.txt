@@ -3,6 +3,7 @@ Excerpt from a real rosetta program
 ==================
 
 INCLUDE ran4.seq
+( This is some text )
 
 100      CONSTANT #drawers
 #drawers CONSTANT #players
@@ -19,6 +20,7 @@ CREATE drawers  #drawers CELLS ALLOT                    \ index 0..#drawers-1
   (builtin
     (core))
   (word)
+  (comment)
   (number)
   (builtin
     (core))
