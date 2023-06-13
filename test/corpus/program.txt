@@ -10,8 +10,9 @@ INCLUDE ran4.seq
 
 CREATE drawers  #drawers CELLS ALLOT                    \ index 0..#drawers-1
 
-: drawer[]                              ( n -- addr )   \ return address of drawer n
+: drawer[]  ( n -- addr )   \ return address of drawer n
     CELLS drawers +
+    ( comment in definition )
 ;
 
 ---
@@ -41,16 +42,12 @@ CREATE drawers  #drawers CELLS ALLOT                    \ index 0..#drawers-1
   (word_definition
     (start_definition)
     (word)
-    (stack_effects
-      (lparen)
-      (word)
-      (stack_effect_sep)
-      (word)
-      (rparen))
+    (comment)
     (comment)
     (builtin
       (core))
     (word)
     (builtin
       (operator))
+    (comment)
     (end_definition)))

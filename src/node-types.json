@@ -29,16 +29,6 @@
     "fields": {}
   },
   {
-    "type": "end_definition",
-    "named": true,
-    "fields": {}
-  },
-  {
-    "type": "number",
-    "named": true,
-    "fields": {}
-  },
-  {
     "type": "operator",
     "named": true,
     "fields": {}
@@ -79,43 +69,6 @@
     }
   },
   {
-    "type": "stack_effect_sep",
-    "named": true,
-    "fields": {}
-  },
-  {
-    "type": "stack_effects",
-    "named": true,
-    "fields": {},
-    "children": {
-      "multiple": true,
-      "required": true,
-      "types": [
-        {
-          "type": "lparen",
-          "named": true
-        },
-        {
-          "type": "rparen",
-          "named": true
-        },
-        {
-          "type": "stack_effect_sep",
-          "named": true
-        },
-        {
-          "type": "word",
-          "named": true
-        }
-      ]
-    }
-  },
-  {
-    "type": "start_definition",
-    "named": true,
-    "fields": {}
-  },
-  {
     "type": "word_definition",
     "named": true,
     "fields": {},
@@ -140,11 +93,11 @@
           "named": true
         },
         {
-          "type": "stack_effects",
+          "type": "start_definition",
           "named": true
         },
         {
-          "type": "start_definition",
+          "type": "string",
           "named": true
         },
         {
@@ -155,55 +108,15 @@
     }
   },
   {
-    "type": "*",
-    "named": false
-  },
-  {
-    "type": "*/",
-    "named": false
-  },
-  {
-    "type": "+",
-    "named": false
-  },
-  {
-    "type": "-",
-    "named": false
-  },
-  {
-    "type": "--",
-    "named": false
-  },
-  {
-    "type": "/",
-    "named": false
-  },
-  {
-    "type": ":",
-    "named": false
-  },
-  {
-    "type": ";",
-    "named": false
-  },
-  {
-    "type": "<",
-    "named": false
-  },
-  {
-    "type": "=",
-    "named": false
-  },
-  {
-    "type": ">",
-    "named": false
-  },
-  {
-    "type": "lparen",
+    "type": "end_definition",
     "named": true
   },
   {
-    "type": "rparen",
+    "type": "number",
+    "named": true
+  },
+  {
+    "type": "start_definition",
     "named": true
   },
   {

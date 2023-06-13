@@ -1,6 +1,7 @@
 ==================
 Define word
 ==================
+: simple 1 + ;
 
 : fib ( n -- fib )
   0 1 rot 0 ?do  over + swap  loop drop ;
@@ -11,12 +12,14 @@ Define word
   (word_definition
     (start_definition)
     (word)
-    (stack_effects
-      (lparen)
-      (word)
-      (stack_effect_sep)
-      (word)
-      (rparen))
+    (number)
+    (builtin
+      (operator))
+    (end_definition))
+  (word_definition
+    (start_definition)
+    (word)
+    (comment)
     (number)
     (number)
     (builtin
