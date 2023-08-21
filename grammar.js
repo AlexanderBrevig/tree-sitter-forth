@@ -71,7 +71,7 @@ module.exports = grammar({
 
     core: $ => choice(...builtin_core.map(x => literal(x))),
 
-    operator: $ => choice(...builtin_oprs.map(x => literal(x))),
+    operator: _ => choice(...builtin_oprs),
 
     word: $ => /\S+/,
   }
