@@ -2,12 +2,13 @@ function escapeRegex(string) {
   return string.replace(/[/\-\\^$*+?.()|[\]{}]/g, '\\$&');
 }
 
-function literal(kwrd) {
-  kwrd = escapeRegex(kwrd);
-  return new RegExp("(" + kwrd.toLowerCase() + ")|(" + kwrd.toUpperCase() + ")");
+function literal(keyword) {
+  keyword = escapeRegex(keyword);
+  return new RegExp(keyword, 'i');
 };
 
 const builtin_oprs = ["=", "+", "-", "/", "*", "*/", ">", "<"];
+
 const builtin_core = ["include", "!", "#", "#>", "#S", "'", "*/MOD", "+!", "+LOOP",
   ",", ".", ".\"", "/MOD", "0<", "0=", "1+", "1-", "2!", "2*", "2/", "2@", "2DROP",
   "2DUP", "2OVER", "2SWAP", "<#", ">BODY", ">IN", ">NUMBER", ">R", "?DUP", "@",

@@ -117,687 +117,853 @@
       "members": [
         {
           "type": "PATTERN",
-          "value": "(include)|(INCLUDE)"
+          "value": "include",
+          "flags": "i"
         },
         {
           "type": "PATTERN",
-          "value": "(!)|(!)"
+          "value": "!",
+          "flags": "i"
         },
         {
           "type": "PATTERN",
-          "value": "(#)|(#)"
+          "value": "#",
+          "flags": "i"
         },
         {
           "type": "PATTERN",
-          "value": "(#>)|(#>)"
+          "value": "#>",
+          "flags": "i"
         },
         {
           "type": "PATTERN",
-          "value": "(#s)|(#S)"
+          "value": "#S",
+          "flags": "i"
         },
         {
           "type": "PATTERN",
-          "value": "(')|(')"
+          "value": "'",
+          "flags": "i"
         },
         {
           "type": "PATTERN",
-          "value": "(\\*\\/mod)|(\\*\\/MOD)"
+          "value": "\\*\\/MOD",
+          "flags": "i"
         },
         {
           "type": "PATTERN",
-          "value": "(\\+!)|(\\+!)"
+          "value": "\\+!",
+          "flags": "i"
         },
         {
           "type": "PATTERN",
-          "value": "(\\+loop)|(\\+LOOP)"
+          "value": "\\+LOOP",
+          "flags": "i"
         },
         {
           "type": "PATTERN",
-          "value": "(,)|(,)"
+          "value": ",",
+          "flags": "i"
         },
         {
           "type": "PATTERN",
-          "value": "(\\.)|(\\.)"
+          "value": "\\.",
+          "flags": "i"
         },
         {
           "type": "PATTERN",
-          "value": "(\\.\")|(\\.\")"
+          "value": "\\.\"",
+          "flags": "i"
         },
         {
           "type": "PATTERN",
-          "value": "(\\/mod)|(\\/MOD)"
+          "value": "\\/MOD",
+          "flags": "i"
         },
         {
           "type": "PATTERN",
-          "value": "(0<)|(0<)"
+          "value": "0<",
+          "flags": "i"
         },
         {
           "type": "PATTERN",
-          "value": "(0=)|(0=)"
+          "value": "0=",
+          "flags": "i"
         },
         {
           "type": "PATTERN",
-          "value": "(1\\+)|(1\\+)"
+          "value": "1\\+",
+          "flags": "i"
         },
         {
           "type": "PATTERN",
-          "value": "(1\\-)|(1\\-)"
+          "value": "1\\-",
+          "flags": "i"
         },
         {
           "type": "PATTERN",
-          "value": "(2!)|(2!)"
+          "value": "2!",
+          "flags": "i"
         },
         {
           "type": "PATTERN",
-          "value": "(2\\*)|(2\\*)"
+          "value": "2\\*",
+          "flags": "i"
         },
         {
           "type": "PATTERN",
-          "value": "(2\\/)|(2\\/)"
+          "value": "2\\/",
+          "flags": "i"
         },
         {
           "type": "PATTERN",
-          "value": "(2@)|(2@)"
+          "value": "2@",
+          "flags": "i"
         },
         {
           "type": "PATTERN",
-          "value": "(2drop)|(2DROP)"
+          "value": "2DROP",
+          "flags": "i"
         },
         {
           "type": "PATTERN",
-          "value": "(2dup)|(2DUP)"
+          "value": "2DUP",
+          "flags": "i"
         },
         {
           "type": "PATTERN",
-          "value": "(2over)|(2OVER)"
+          "value": "2OVER",
+          "flags": "i"
         },
         {
           "type": "PATTERN",
-          "value": "(2swap)|(2SWAP)"
+          "value": "2SWAP",
+          "flags": "i"
         },
         {
           "type": "PATTERN",
-          "value": "(<#)|(<#)"
+          "value": "<#",
+          "flags": "i"
         },
         {
           "type": "PATTERN",
-          "value": "(>body)|(>BODY)"
+          "value": ">BODY",
+          "flags": "i"
         },
         {
           "type": "PATTERN",
-          "value": "(>in)|(>IN)"
+          "value": ">IN",
+          "flags": "i"
         },
         {
           "type": "PATTERN",
-          "value": "(>number)|(>NUMBER)"
+          "value": ">NUMBER",
+          "flags": "i"
         },
         {
           "type": "PATTERN",
-          "value": "(>r)|(>R)"
+          "value": ">R",
+          "flags": "i"
         },
         {
           "type": "PATTERN",
-          "value": "(\\?dup)|(\\?DUP)"
+          "value": "\\?DUP",
+          "flags": "i"
         },
         {
           "type": "PATTERN",
-          "value": "(@)|(@)"
+          "value": "@",
+          "flags": "i"
         },
         {
           "type": "PATTERN",
-          "value": "(abort)|(ABORT)"
+          "value": "ABORT",
+          "flags": "i"
         },
         {
           "type": "PATTERN",
-          "value": "(abort\")|(ABORT\")"
+          "value": "ABORT\"",
+          "flags": "i"
         },
         {
           "type": "PATTERN",
-          "value": "(abs)|(ABS)"
+          "value": "ABS",
+          "flags": "i"
         },
         {
           "type": "PATTERN",
-          "value": "(accept)|(ACCEPT)"
+          "value": "ACCEPT",
+          "flags": "i"
         },
         {
           "type": "PATTERN",
-          "value": "(align)|(ALIGN)"
+          "value": "ALIGN",
+          "flags": "i"
         },
         {
           "type": "PATTERN",
-          "value": "(aligned)|(ALIGNED)"
+          "value": "ALIGNED",
+          "flags": "i"
         },
         {
           "type": "PATTERN",
-          "value": "(allot)|(ALLOT)"
+          "value": "ALLOT",
+          "flags": "i"
         },
         {
           "type": "PATTERN",
-          "value": "(and)|(AND)"
+          "value": "AND",
+          "flags": "i"
         },
         {
           "type": "PATTERN",
-          "value": "(base)|(BASE)"
+          "value": "BASE",
+          "flags": "i"
         },
         {
           "type": "PATTERN",
-          "value": "(begin)|(BEGIN)"
+          "value": "BEGIN",
+          "flags": "i"
         },
         {
           "type": "PATTERN",
-          "value": "(bl)|(BL)"
+          "value": "BL",
+          "flags": "i"
         },
         {
           "type": "PATTERN",
-          "value": "(c!)|(C!)"
+          "value": "C!",
+          "flags": "i"
         },
         {
           "type": "PATTERN",
-          "value": "(c,)|(C,)"
+          "value": "C,",
+          "flags": "i"
         },
         {
           "type": "PATTERN",
-          "value": "(c@)|(C@)"
+          "value": "C@",
+          "flags": "i"
         },
         {
           "type": "PATTERN",
-          "value": "(cell\\+)|(CELL\\+)"
+          "value": "CELL\\+",
+          "flags": "i"
         },
         {
           "type": "PATTERN",
-          "value": "(cells)|(CELLS)"
+          "value": "CELLS",
+          "flags": "i"
         },
         {
           "type": "PATTERN",
-          "value": "(char)|(CHAR)"
+          "value": "CHAR",
+          "flags": "i"
         },
         {
           "type": "PATTERN",
-          "value": "(char\\+)|(CHAR\\+)"
+          "value": "CHAR\\+",
+          "flags": "i"
         },
         {
           "type": "PATTERN",
-          "value": "(chars)|(CHARS)"
+          "value": "CHARS",
+          "flags": "i"
         },
         {
           "type": "PATTERN",
-          "value": "(constant)|(CONSTANT)"
+          "value": "CONSTANT",
+          "flags": "i"
         },
         {
           "type": "PATTERN",
-          "value": "(count)|(COUNT)"
+          "value": "COUNT",
+          "flags": "i"
         },
         {
           "type": "PATTERN",
-          "value": "(cr)|(CR)"
+          "value": "CR",
+          "flags": "i"
         },
         {
           "type": "PATTERN",
-          "value": "(create)|(CREATE)"
+          "value": "CREATE",
+          "flags": "i"
         },
         {
           "type": "PATTERN",
-          "value": "(decimal)|(DECIMAL)"
+          "value": "DECIMAL",
+          "flags": "i"
         },
         {
           "type": "PATTERN",
-          "value": "(depth)|(DEPTH)"
+          "value": "DEPTH",
+          "flags": "i"
         },
         {
           "type": "PATTERN",
-          "value": "(do)|(DO)"
+          "value": "DO",
+          "flags": "i"
         },
         {
           "type": "PATTERN",
-          "value": "(does>)|(DOES>)"
+          "value": "DOES>",
+          "flags": "i"
         },
         {
           "type": "PATTERN",
-          "value": "(drop)|(DROP)"
+          "value": "DROP",
+          "flags": "i"
         },
         {
           "type": "PATTERN",
-          "value": "(dup)|(DUP)"
+          "value": "DUP",
+          "flags": "i"
         },
         {
           "type": "PATTERN",
-          "value": "(else)|(ELSE)"
+          "value": "ELSE",
+          "flags": "i"
         },
         {
           "type": "PATTERN",
-          "value": "(emit)|(EMIT)"
+          "value": "EMIT",
+          "flags": "i"
         },
         {
           "type": "PATTERN",
-          "value": "(environment\\?)|(ENVIRONMENT\\?)"
+          "value": "ENVIRONMENT\\?",
+          "flags": "i"
         },
         {
           "type": "PATTERN",
-          "value": "(evaluate)|(EVALUATE)"
+          "value": "EVALUATE",
+          "flags": "i"
         },
         {
           "type": "PATTERN",
-          "value": "(execute)|(EXECUTE)"
+          "value": "EXECUTE",
+          "flags": "i"
         },
         {
           "type": "PATTERN",
-          "value": "(exit)|(EXIT)"
+          "value": "EXIT",
+          "flags": "i"
         },
         {
           "type": "PATTERN",
-          "value": "(fill)|(FILL)"
+          "value": "FILL",
+          "flags": "i"
         },
         {
           "type": "PATTERN",
-          "value": "(find)|(FIND)"
+          "value": "FIND",
+          "flags": "i"
         },
         {
           "type": "PATTERN",
-          "value": "(fm\\/mod)|(FM\\/MOD)"
+          "value": "FM\\/MOD",
+          "flags": "i"
         },
         {
           "type": "PATTERN",
-          "value": "(here)|(HERE)"
+          "value": "HERE",
+          "flags": "i"
         },
         {
           "type": "PATTERN",
-          "value": "(hold)|(HOLD)"
+          "value": "HOLD",
+          "flags": "i"
         },
         {
           "type": "PATTERN",
-          "value": "(i)|(I)"
+          "value": "I",
+          "flags": "i"
         },
         {
           "type": "PATTERN",
-          "value": "(if)|(IF)"
+          "value": "IF",
+          "flags": "i"
         },
         {
           "type": "PATTERN",
-          "value": "(immediate)|(IMMEDIATE)"
+          "value": "IMMEDIATE",
+          "flags": "i"
         },
         {
           "type": "PATTERN",
-          "value": "(invert)|(INVERT)"
+          "value": "INVERT",
+          "flags": "i"
         },
         {
           "type": "PATTERN",
-          "value": "(j)|(J)"
+          "value": "J",
+          "flags": "i"
         },
         {
           "type": "PATTERN",
-          "value": "(key)|(KEY)"
+          "value": "KEY",
+          "flags": "i"
         },
         {
           "type": "PATTERN",
-          "value": "(leave)|(LEAVE)"
+          "value": "LEAVE",
+          "flags": "i"
         },
         {
           "type": "PATTERN",
-          "value": "(loop)|(LOOP)"
+          "value": "LOOP",
+          "flags": "i"
         },
         {
           "type": "PATTERN",
-          "value": "(lshift)|(LSHIFT)"
+          "value": "LSHIFT",
+          "flags": "i"
         },
         {
           "type": "PATTERN",
-          "value": "(m\\*)|(M\\*)"
+          "value": "M\\*",
+          "flags": "i"
         },
         {
           "type": "PATTERN",
-          "value": "(max)|(MAX)"
+          "value": "MAX",
+          "flags": "i"
         },
         {
           "type": "PATTERN",
-          "value": "(min)|(MIN)"
+          "value": "MIN",
+          "flags": "i"
         },
         {
           "type": "PATTERN",
-          "value": "(mod)|(MOD)"
+          "value": "MOD",
+          "flags": "i"
         },
         {
           "type": "PATTERN",
-          "value": "(move)|(MOVE)"
+          "value": "MOVE",
+          "flags": "i"
         },
         {
           "type": "PATTERN",
-          "value": "(negate)|(NEGATE)"
+          "value": "NEGATE",
+          "flags": "i"
         },
         {
           "type": "PATTERN",
-          "value": "(or)|(OR)"
+          "value": "OR",
+          "flags": "i"
         },
         {
           "type": "PATTERN",
-          "value": "(over)|(OVER)"
+          "value": "OVER",
+          "flags": "i"
         },
         {
           "type": "PATTERN",
-          "value": "(postpone)|(POSTPONE)"
+          "value": "POSTPONE",
+          "flags": "i"
         },
         {
           "type": "PATTERN",
-          "value": "(quit)|(QUIT)"
+          "value": "QUIT",
+          "flags": "i"
         },
         {
           "type": "PATTERN",
-          "value": "(r>)|(R>)"
+          "value": "R>",
+          "flags": "i"
         },
         {
           "type": "PATTERN",
-          "value": "(r@)|(R@)"
+          "value": "R@",
+          "flags": "i"
         },
         {
           "type": "PATTERN",
-          "value": "(recurse)|(RECURSE)"
+          "value": "RECURSE",
+          "flags": "i"
         },
         {
           "type": "PATTERN",
-          "value": "(repeat)|(REPEAT)"
+          "value": "REPEAT",
+          "flags": "i"
         },
         {
           "type": "PATTERN",
-          "value": "(rot)|(ROT)"
+          "value": "ROT",
+          "flags": "i"
         },
         {
           "type": "PATTERN",
-          "value": "(rshift)|(RSHIFT)"
+          "value": "RSHIFT",
+          "flags": "i"
         },
         {
           "type": "PATTERN",
-          "value": "(s\")|(S\")"
+          "value": "S\"",
+          "flags": "i"
         },
         {
           "type": "PATTERN",
-          "value": "(s>d)|(S>D)"
+          "value": "S>D",
+          "flags": "i"
         },
         {
           "type": "PATTERN",
-          "value": "(sign)|(SIGN)"
+          "value": "SIGN",
+          "flags": "i"
         },
         {
           "type": "PATTERN",
-          "value": "(sm\\/rem)|(SM\\/REM)"
+          "value": "SM\\/REM",
+          "flags": "i"
         },
         {
           "type": "PATTERN",
-          "value": "(source)|(SOURCE)"
+          "value": "SOURCE",
+          "flags": "i"
         },
         {
           "type": "PATTERN",
-          "value": "(space)|(SPACE)"
+          "value": "SPACE",
+          "flags": "i"
         },
         {
           "type": "PATTERN",
-          "value": "(spaces)|(SPACES)"
+          "value": "SPACES",
+          "flags": "i"
         },
         {
           "type": "PATTERN",
-          "value": "(state)|(STATE)"
+          "value": "STATE",
+          "flags": "i"
         },
         {
           "type": "PATTERN",
-          "value": "(swap)|(SWAP)"
+          "value": "SWAP",
+          "flags": "i"
         },
         {
           "type": "PATTERN",
-          "value": "(then)|(THEN)"
+          "value": "THEN",
+          "flags": "i"
         },
         {
           "type": "PATTERN",
-          "value": "(type)|(TYPE)"
+          "value": "TYPE",
+          "flags": "i"
         },
         {
           "type": "PATTERN",
-          "value": "(u\\.)|(U\\.)"
+          "value": "U\\.",
+          "flags": "i"
         },
         {
           "type": "PATTERN",
-          "value": "(u<)|(U<)"
+          "value": "U<",
+          "flags": "i"
         },
         {
           "type": "PATTERN",
-          "value": "(um\\*)|(UM\\*)"
+          "value": "UM\\*",
+          "flags": "i"
         },
         {
           "type": "PATTERN",
-          "value": "(um\\/mod)|(UM\\/MOD)"
+          "value": "UM\\/MOD",
+          "flags": "i"
         },
         {
           "type": "PATTERN",
-          "value": "(unloop)|(UNLOOP)"
+          "value": "UNLOOP",
+          "flags": "i"
         },
         {
           "type": "PATTERN",
-          "value": "(until)|(UNTIL)"
+          "value": "UNTIL",
+          "flags": "i"
         },
         {
           "type": "PATTERN",
-          "value": "(variable)|(VARIABLE)"
+          "value": "VARIABLE",
+          "flags": "i"
         },
         {
           "type": "PATTERN",
-          "value": "(while)|(WHILE)"
+          "value": "WHILE",
+          "flags": "i"
         },
         {
           "type": "PATTERN",
-          "value": "(word)|(WORD)"
+          "value": "WORD",
+          "flags": "i"
         },
         {
           "type": "PATTERN",
-          "value": "(xor)|(XOR)"
+          "value": "XOR",
+          "flags": "i"
         },
         {
           "type": "PATTERN",
-          "value": "(\\[)|(\\[)"
+          "value": "\\[",
+          "flags": "i"
         },
         {
           "type": "PATTERN",
-          "value": "(\\['\\])|(\\['\\])"
+          "value": "\\['\\]",
+          "flags": "i"
         },
         {
           "type": "PATTERN",
-          "value": "(\\[char\\])|(\\[CHAR\\])"
+          "value": "\\[CHAR\\]",
+          "flags": "i"
         },
         {
           "type": "PATTERN",
-          "value": "(\\.\\(\")|(\\.\\(\")"
+          "value": "\\.\\(\"",
+          "flags": "i"
         },
         {
           "type": "PATTERN",
-          "value": "(\\.r)|(\\.R)"
+          "value": "\\.R",
+          "flags": "i"
         },
         {
           "type": "PATTERN",
-          "value": "(\\.s)|(\\.S)"
+          "value": "\\.S",
+          "flags": "i"
         },
         {
           "type": "PATTERN",
-          "value": "(0<>)|(0<>)"
+          "value": "0<>",
+          "flags": "i"
         },
         {
           "type": "PATTERN",
-          "value": "(0>)|(0>)"
+          "value": "0>",
+          "flags": "i"
         },
         {
           "type": "PATTERN",
-          "value": "(2>r)|(2>R)"
+          "value": "2>R",
+          "flags": "i"
         },
         {
           "type": "PATTERN",
-          "value": "(2r>)|(2R>)"
+          "value": "2R>",
+          "flags": "i"
         },
         {
           "type": "PATTERN",
-          "value": "(2r@)|(2R@)"
+          "value": "2R@",
+          "flags": "i"
         },
         {
           "type": "PATTERN",
-          "value": "(:noname)|(:NONAME)"
+          "value": ":NONAME",
+          "flags": "i"
         },
         {
           "type": "PATTERN",
-          "value": "(<>)|(<>)"
+          "value": "<>",
+          "flags": "i"
         },
         {
           "type": "PATTERN",
-          "value": "(\\?do)|(\\?DO)"
+          "value": "\\?DO",
+          "flags": "i"
         },
         {
           "type": "PATTERN",
-          "value": "(action\\-of)|(ACTION\\-OF)"
+          "value": "ACTION\\-OF",
+          "flags": "i"
         },
         {
           "type": "PATTERN",
-          "value": "(again)|(AGAIN)"
+          "value": "AGAIN",
+          "flags": "i"
         },
         {
           "type": "PATTERN",
-          "value": "(buffer:)|(BUFFER:)"
+          "value": "BUFFER:",
+          "flags": "i"
         },
         {
           "type": "PATTERN",
-          "value": "(c\")|(C\")"
+          "value": "C\"",
+          "flags": "i"
         },
         {
           "type": "PATTERN",
-          "value": "(case)|(CASE)"
+          "value": "CASE",
+          "flags": "i"
         },
         {
           "type": "PATTERN",
-          "value": "(compile,)|(COMPILE,)"
+          "value": "COMPILE,",
+          "flags": "i"
         },
         {
           "type": "PATTERN",
-          "value": "(defer)|(DEFER)"
+          "value": "DEFER",
+          "flags": "i"
         },
         {
           "type": "PATTERN",
-          "value": "(defer!)|(DEFER!)"
+          "value": "DEFER!",
+          "flags": "i"
         },
         {
           "type": "PATTERN",
-          "value": "(defer@)|(DEFER@)"
+          "value": "DEFER@",
+          "flags": "i"
         },
         {
           "type": "PATTERN",
-          "value": "(endcase)|(ENDCASE)"
+          "value": "ENDCASE",
+          "flags": "i"
         },
         {
           "type": "PATTERN",
-          "value": "(endof)|(ENDOF)"
+          "value": "ENDOF",
+          "flags": "i"
         },
         {
           "type": "PATTERN",
-          "value": "(erase)|(ERASE)"
+          "value": "ERASE",
+          "flags": "i"
         },
         {
           "type": "PATTERN",
-          "value": "(false)|(FALSE)"
+          "value": "FALSE",
+          "flags": "i"
         },
         {
           "type": "PATTERN",
-          "value": "(hex)|(HEX)"
+          "value": "HEX",
+          "flags": "i"
         },
         {
           "type": "PATTERN",
-          "value": "(holds)|(HOLDS)"
+          "value": "HOLDS",
+          "flags": "i"
         },
         {
           "type": "PATTERN",
-          "value": "(is)|(IS)"
+          "value": "IS",
+          "flags": "i"
         },
         {
           "type": "PATTERN",
-          "value": "(marker)|(MARKER)"
+          "value": "MARKER",
+          "flags": "i"
         },
         {
           "type": "PATTERN",
-          "value": "(nip)|(NIP)"
+          "value": "NIP",
+          "flags": "i"
         },
         {
           "type": "PATTERN",
-          "value": "(of)|(OF)"
+          "value": "OF",
+          "flags": "i"
         },
         {
           "type": "PATTERN",
-          "value": "(pad)|(PAD)"
+          "value": "PAD",
+          "flags": "i"
         },
         {
           "type": "PATTERN",
-          "value": "(parse)|(PARSE)"
+          "value": "PARSE",
+          "flags": "i"
         },
         {
           "type": "PATTERN",
-          "value": "(parse\\-name)|(PARSE\\-NAME)"
+          "value": "PARSE\\-NAME",
+          "flags": "i"
         },
         {
           "type": "PATTERN",
-          "value": "(pick)|(PICK)"
+          "value": "PICK",
+          "flags": "i"
         },
         {
           "type": "PATTERN",
-          "value": "(refill)|(REFILL)"
+          "value": "REFILL",
+          "flags": "i"
         },
         {
           "type": "PATTERN",
-          "value": "(restore\\-input)|(RESTORE\\-INPUT)"
+          "value": "RESTORE\\-INPUT",
+          "flags": "i"
         },
         {
           "type": "PATTERN",
-          "value": "(roll)|(ROLL)"
+          "value": "ROLL",
+          "flags": "i"
         },
         {
           "type": "PATTERN",
-          "value": "(s\\\\\")|(S\\\\\")"
+          "value": "S\\\\\"",
+          "flags": "i"
         },
         {
           "type": "PATTERN",
-          "value": "(save\\-input)|(SAVE\\-INPUT)"
+          "value": "SAVE\\-INPUT",
+          "flags": "i"
         },
         {
           "type": "PATTERN",
-          "value": "(source\\-id)|(SOURCE\\-ID)"
+          "value": "SOURCE\\-ID",
+          "flags": "i"
         },
         {
           "type": "PATTERN",
-          "value": "(to)|(TO)"
+          "value": "TO",
+          "flags": "i"
         },
         {
           "type": "PATTERN",
-          "value": "(true)|(TRUE)"
+          "value": "TRUE",
+          "flags": "i"
         },
         {
           "type": "PATTERN",
-          "value": "(tuck)|(TUCK)"
+          "value": "TUCK",
+          "flags": "i"
         },
         {
           "type": "PATTERN",
-          "value": "(u\\.r)|(U\\.R)"
+          "value": "U\\.R",
+          "flags": "i"
         },
         {
           "type": "PATTERN",
-          "value": "(u>)|(U>)"
+          "value": "U>",
+          "flags": "i"
         },
         {
           "type": "PATTERN",
-          "value": "(unused)|(UNUSED)"
+          "value": "UNUSED",
+          "flags": "i"
         },
         {
           "type": "PATTERN",
-          "value": "(value)|(VALUE)"
+          "value": "VALUE",
+          "flags": "i"
         },
         {
           "type": "PATTERN",
-          "value": "(within)|(WITHIN)"
+          "value": "WITHIN",
+          "flags": "i"
         },
         {
           "type": "PATTERN",
-          "value": "(\\[compile\\])|(\\[COMPILE\\])"
-        },
-        {
-          "type": "PATTERN",
-          "value": "(\\\\)|(\\\\)"
+          "value": "\\[COMPILE\\]",
+          "flags": "i"
         }
       ]
     },
@@ -805,36 +971,36 @@
       "type": "CHOICE",
       "members": [
         {
-          "type": "PATTERN",
-          "value": "(=)|(=)"
+          "type": "STRING",
+          "value": "="
         },
         {
-          "type": "PATTERN",
-          "value": "(\\+)|(\\+)"
+          "type": "STRING",
+          "value": "+"
         },
         {
-          "type": "PATTERN",
-          "value": "(\\-)|(\\-)"
+          "type": "STRING",
+          "value": "-"
         },
         {
-          "type": "PATTERN",
-          "value": "(\\/)|(\\/)"
+          "type": "STRING",
+          "value": "/"
         },
         {
-          "type": "PATTERN",
-          "value": "(\\*)|(\\*)"
+          "type": "STRING",
+          "value": "*"
         },
         {
-          "type": "PATTERN",
-          "value": "(\\*\\/)|(\\*\\/)"
+          "type": "STRING",
+          "value": "*/"
         },
         {
-          "type": "PATTERN",
-          "value": "(>)|(>)"
+          "type": "STRING",
+          "value": ">"
         },
         {
-          "type": "PATTERN",
-          "value": "(<)|(<)"
+          "type": "STRING",
+          "value": "<"
         }
       ]
     },
