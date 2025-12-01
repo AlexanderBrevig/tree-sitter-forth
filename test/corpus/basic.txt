@@ -6,16 +6,21 @@ Basic operands and stack
 ---
 
 (source_file
-  (number)
-  (number)
+  (number
+    (decimal_number))
+  (number
+    (decimal_number))
   (builtin
     (operator))
-  (number)
+  (number
+    (decimal_number))
   (builtin
     (operator))
-  (number)
+  (number
+    (decimal_number))
   (builtin
     (operator))
-  (number)
+  (number
+    (decimal_number))
   (builtin
     (operator)))

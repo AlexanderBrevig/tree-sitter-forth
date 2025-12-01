@@ -8,7 +8,15 @@
       "required": true,
       "types": [
         {
+          "type": "control_flow",
+          "named": true
+        },
+        {
           "type": "core",
+          "named": true
+        },
+        {
+          "type": "io",
           "named": true
         },
         {
@@ -42,9 +50,58 @@
     }
   },
   {
+    "type": "control_flow",
+    "named": true,
+    "fields": {}
+  },
+  {
     "type": "core",
     "named": true,
     "fields": {}
+  },
+  {
+    "type": "io",
+    "named": true,
+    "fields": {}
+  },
+  {
+    "type": "number",
+    "named": true,
+    "fields": {},
+    "children": {
+      "multiple": false,
+      "required": true,
+      "types": [
+        {
+          "type": "binary_number",
+          "named": true
+        },
+        {
+          "type": "character_literal",
+          "named": true
+        },
+        {
+          "type": "decimal_number",
+          "named": true
+        },
+        {
+          "type": "double_cell_number",
+          "named": true
+        },
+        {
+          "type": "float_number",
+          "named": true
+        },
+        {
+          "type": "hex_number",
+          "named": true
+        },
+        {
+          "type": "octal_number",
+          "named": true
+        }
+      ]
+    }
   },
   {
     "type": "operator",
@@ -132,39 +189,23 @@
     }
   },
   {
-    "type": "*",
-    "named": false
-  },
-  {
-    "type": "*/",
-    "named": false
-  },
-  {
-    "type": "+",
-    "named": false
-  },
-  {
-    "type": "-",
-    "named": false
-  },
-  {
-    "type": "/",
-    "named": false
-  },
-  {
-    "type": "<",
-    "named": false
-  },
-  {
-    "type": "=",
-    "named": false
-  },
-  {
-    "type": ">",
-    "named": false
+    "type": "binary_number",
+    "named": true
   },
   {
     "type": "block_comment",
+    "named": true
+  },
+  {
+    "type": "character_literal",
+    "named": true
+  },
+  {
+    "type": "decimal_number",
+    "named": true
+  },
+  {
+    "type": "double_cell_number",
     "named": true
   },
   {
@@ -172,11 +213,19 @@
     "named": true
   },
   {
+    "type": "float_number",
+    "named": true
+  },
+  {
+    "type": "hex_number",
+    "named": true
+  },
+  {
     "type": "line_comment",
     "named": true
   },
   {
-    "type": "number",
+    "type": "octal_number",
     "named": true
   },
   {

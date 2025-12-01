@@ -23,7 +23,8 @@ CREATE drawers  #drawers CELLS ALLOT                    \ index 0..#drawers-1
   (word)
   (comment
     (block_comment))
-  (number)
+  (number
+    (decimal_number))
   (builtin
     (core))
   (word)

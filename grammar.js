@@ -7,26 +7,59 @@ function literal(keyword) {
   return new RegExp(keyword, 'i');
 };
 
-const builtin_oprs = ["=", "+", "-", "/", "*", "*/", ">", "<"];
+const builtin_oprs = [
+  // Arithmetic operators
+  "=", "+", "-", "/", "*", "*/", ">", "<",
+  "MOD", "/MOD", "*/MOD", "FM/MOD", "SM/REM",
+  "1+", "1-", "2*", "2/",
+  "M*", "UM*", "UM/MOD",
+  "ABS", "NEGATE", "MIN", "MAX",
+  // Logical operators
+  "AND", "OR", "XOR", "INVERT",
+  "LSHIFT", "RSHIFT",
+  // Comparison operators
+  "<>", "0<", "0=", "0>", "0<>",
+  "U<", "U>",
+  // Stack manipulation
+  "DUP", "DROP", "SWAP", "OVER", "ROT", "NIP", "TUCK", "PICK", "ROLL",
+  "2DUP", "2DROP", "2SWAP", "2OVER",
+  ">R", "R>", "R@",
+  "2>R", "2R>", "2R@",
+  "?DUP"
+];
 
-const builtin_core = ["include", "!", "#", "#>", "#S", "'", "*/MOD", "+!", "+LOOP",
-  ",", ".", ".\"", "/MOD", "0<", "0=", "1+", "1-", "2!", "2*", "2/", "2@", "2DROP",
-  "2DUP", "2OVER", "2SWAP", "<#", ">BODY", ">IN", ">NUMBER", ">R", "?DUP", "@",
-  "ABORT", "ABORT\"", "ABS", "ACCEPT", "ALIGN", "ALIGNED", "ALLOT", "AND", "BASE",
-  "BEGIN", "BL", "C!", "C,", "C@", "CELL+", "CELLS", "CHAR", "CHAR+", "CHARS",
-  "CONSTANT", "COUNT", "CR", "CREATE", "DECIMAL", "DEPTH", "DO", "DOES>", "DROP",
-  "DUP", "ELSE", "EMIT", "ENVIRONMENT?", "EVALUATE", "EXECUTE", "EXIT", "FILL",
-  "FIND", "FM/MOD", "HERE", "HOLD", "I", "IF", "IMMEDIATE", "INVERT", "J", "KEY",
-  "LEAVE", "LOOP", "LSHIFT", "M*", "MAX", "MIN", "MOD", "MOVE", "NEGATE", "OR",
-  "OVER", "POSTPONE", "QUIT", "R>", "R@", "RECURSE", "REPEAT", "ROT", "RSHIFT",
-  "S\"", "S>D", "SIGN", "SM/REM", "SOURCE", "SPACE", "SPACES", "STATE", "SWAP",
-  "THEN", "TYPE", "U.", "U<", "UM*", "UM/MOD", "UNLOOP", "UNTIL", "VARIABLE",
-  "WHILE", "WORD", "XOR", "[", "[']", "[CHAR]", ".(\"", ".R", ".S", "0<>", "0>",
-  "2>R", "2R>", "2R@", ":NONAME", "<>", "?DO", "ACTION-OF", "AGAIN", "BUFFER:",
-  "C\"", "CASE", "COMPILE,", "DEFER", "DEFER!", "DEFER@", "ENDCASE", "ENDOF",
-  "ERASE", "FALSE", "HEX", "HOLDS", "IS", "MARKER", "NIP", "OF", "PAD", "PARSE",
-  "PARSE-NAME", "PICK", "REFILL", "RESTORE-INPUT", "ROLL", "S\\\"", "SAVE-INPUT",
-  "SOURCE-ID", "TO", "TRUE", "TUCK", "U.R", "U>", "UNUSED", "VALUE", "WITHIN", "[COMPILE]" ];
+const control_flow = ["IF", "THEN", "ELSE", "BEGIN", "UNTIL", "WHILE", "REPEAT",
+  "AGAIN", "DO", "LOOP", "+LOOP", "?DO", "UNLOOP", "LEAVE", "EXIT", "RECURSE",
+  "CASE", "OF", "ENDOF", "ENDCASE"];
+
+const io_words = [
+  // Output
+  ".", "EMIT", "TYPE", "SPACE", "SPACES", "CR", ".\"", ".S", ".R", "U.", "U.R",
+  // Input
+  "KEY", "ACCEPT", "WORD",
+  // String parsing
+  "PARSE", "PARSE-NAME",
+  // Formatting
+  ".(\"",
+];
+
+const builtin_core = ["include", "!", "#", "#>", "#S", "'", "+!",
+  ",", "2!", "2@",
+  "<#", ">BODY", ">IN", ">NUMBER", "@",
+  "ABORT", "ABORT\"", "ALIGN", "ALIGNED", "ALLOT", "BASE",
+  "BL", "C!", "C,", "C@", "CELL+", "CELLS", "CHAR", "CHAR+", "CHARS",
+  "CONSTANT", "COUNT", "CREATE", "DECIMAL", "DEPTH", "DOES>",
+  "ENVIRONMENT?", "EVALUATE", "EXECUTE", "FILL",
+  "FIND", "HERE", "HOLD", "I", "IMMEDIATE", "J",
+  "MOVE", "POSTPONE", "QUIT",
+  "S\"", "S>D", "SIGN", "SOURCE", "STATE",
+  "VARIABLE",
+  "[", "[']", "[CHAR]",
+  ":NONAME", "ACTION-OF", "BUFFER:",
+  "C\"", "COMPILE,", "DEFER", "DEFER!", "DEFER@",
+  "ERASE", "FALSE", "HEX", "HOLDS", "IS", "MARKER", "PAD",
+  "REFILL", "RESTORE-INPUT", "S\\\"", "SAVE-INPUT",
+  "SOURCE-ID", "TO", "TRUE", "UNUSED", "VALUE", "WITHIN", "[COMPILE]" ];
 
 module.exports = grammar({
   name: 'forth',
@@ -40,11 +73,11 @@ module.exports = grammar({
     ),
 
     _tokens: $ => choice(
+      $.comment,
       $.string,
       $.number,
       $.builtin,
       $.word,
-      $.comment
     ),
 
     string: $ => choice(
@@ -52,11 +85,35 @@ module.exports = grammar({
       /\." [^"]*"/,       // ." followed by space and content
     ),
 
-    number: $ => /('\w')|(0[xX][0-9a-fA-F]+)|(\$[0-9a-fA-F]+)|(%[01]+)|(&\d+)|\d+/,
+    number: $ => choice(
+      $.character_literal,
+      $.hex_number,
+      $.binary_number,
+      $.octal_number,
+      $.float_number,
+      $.double_cell_number,
+      $.decimal_number,
+    ),
+
+    character_literal: $ => /'\w'/,
+
+    hex_number: $ => /-?(0[xX][0-9a-fA-F]+|\$[0-9a-fA-F]+)/,
+
+    binary_number: $ => /-?%[01]+/,
+
+    octal_number: $ => /-?&\d+/,
+
+    float_number: $ => /-?\d+\.\d+([eE][+-]?\d+)?/,
+
+    double_cell_number: $ => /-?\d+\./,
+
+    decimal_number: $ => /-?\d+/,
 
     builtin: $ => choice(
-      $.core,
+      $.control_flow,
+      $.io,
       $.operator,
+      $.core,
     ),
 
     start_definition: $ => ":",
@@ -80,9 +137,13 @@ module.exports = grammar({
 
     block_comment: $ => /\( [^)]*\)/,
 
+    control_flow: $ => choice(...control_flow.map(x => literal(x))),
+
+    io: $ => choice(...io_words.map(x => literal(x))),
+
     core: $ => choice(...builtin_core.map(x => literal(x))),
 
-    operator: _ => choice(...builtin_oprs),
+    operator: $ => choice(...builtin_oprs.map(x => literal(x))),
 
     word: $ => /\S+/,
   }

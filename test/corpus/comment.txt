@@ -10,8 +10,10 @@ Line comment
 (source_file
   (comment
     (line_comment))
-  (number)
-  (number)
+  (number
+    (decimal_number))
+  (number
+    (decimal_number))
   (builtin
     (operator)))
 
@@ -27,8 +29,10 @@ Block comment
 (source_file
   (comment
     (block_comment))
-  (number)
-  (number)
+  (number
+    (decimal_number))
+  (number
+    (decimal_number))
   (builtin
     (operator)))
 
@@ -44,8 +48,10 @@ Stack effect comment
 (source_file
   (comment
     (stack_effect))
-  (number)
-  (number)
+  (number
+    (decimal_number))
+  (number
+    (decimal_number))
   (builtin
     (operator)))
 
@@ -60,7 +66,8 @@ Multiple comments on same line
 (source_file
   (comment
     (block_comment))
-  (number)
+  (number
+    (decimal_number))
   (builtin
     (operator))
   (comment
@@ -99,8 +106,10 @@ Line comment at end of line
 ---
 
 (source_file
-  (number)
-  (number)
+  (number
+    (decimal_number))
+  (number
+    (decimal_number))
   (builtin
     (operator))
   (comment
@@ -120,10 +129,11 @@ Mixed comment types
     (line_comment))
   (comment
     (block_comment))
-  (number)
+  (number
+    (decimal_number))
   (builtin
     (operator))
   (comment
     (stack_effect))
   (builtin
-    (core)))
+    (operator)))

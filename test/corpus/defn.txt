@@ -12,7 +12,8 @@ Define word
   (word_definition
     (start_definition)
     (word)
-    (number)
+    (number
+      (decimal_number))
     (builtin
       (operator))
     (end_definition))
@@ -21,21 +22,24 @@ Define word
     (word)
     (comment
       (stack_effect))
-    (number)
-    (number)
+    (number
+      (decimal_number))
+    (number
+      (decimal_number))
     (builtin
-      (core))
-    (number)
+      (operator))
+    (number
+      (decimal_number))
     (builtin
-      (core))
-    (builtin
-      (core))
+      (control_flow))
     (builtin
       (operator))
     (builtin
-      (core))
+      (operator))
     (builtin
-      (core))
+      (operator))
     (builtin
-      (core))
+      (control_flow))
+    (builtin
+      (operator))
     (end_definition)))

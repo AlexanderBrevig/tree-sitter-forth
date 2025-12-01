@@ -9,7 +9,7 @@ s" Hello World!" .s
 (source_file
   (string)
   (builtin
-    (core)))
+    (io)))
 
 ==================
 String uppercase S"
@@ -22,7 +22,7 @@ S" HELLO WORLD!" .s
 (source_file
   (string)
   (builtin
-    (core)))
+    (io)))
 
 ==================
 String c" counted
@@ -35,7 +35,7 @@ c" counted string" drop
 (source_file
   (string)
   (builtin
-    (core)))
+    (operator)))
 
 ==================
 String C" counted uppercase
@@ -48,7 +48,7 @@ C" COUNTED STRING" drop
 (source_file
   (string)
   (builtin
-    (core)))
+    (operator)))
 
 ==================
 String ." print
@@ -61,7 +61,7 @@ String ." print
 (source_file
   (string)
   (builtin
-    (core)))
+    (io)))
 
 ==================
 String empty
