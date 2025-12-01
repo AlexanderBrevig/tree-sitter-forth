@@ -1,0 +1,29 @@
+{
+  "grammars": [
+    {
+      "name": "forth",
+      "camelcase": "Forth",
+      "scope": "source.forth",
+      "path": ".",
+      "file-types": ["fs", "forth", "fth", "f", "4th"],
+      "highlights": "queries/highlights.scm"
+    }
+  ],
+  "metadata": {
+    "version": "0.2.0",
+    "license": "MIT",
+    "description": "Forth grammar for tree-sitter",
+    "authors": [
+      {
+        "name": "Alexander Brevig"
+      }
+    ],
+    "links": {
+      "repository": "https://github.com/AlexanderBrevig/tree-sitter-forth"
+    }
+  },
+  "bindings": {
+    "node": true,
+    "rust": true
+  }
+}

@@ -21,7 +21,8 @@ CREATE drawers  #drawers CELLS ALLOT                    \ index 0..#drawers-1
   (builtin
     (core))
   (word)
-  (comment)
+  (comment
+    (block_comment))
   (number)
   (builtin
     (core))
@@ -38,16 +39,20 @@ CREATE drawers  #drawers CELLS ALLOT                    \ index 0..#drawers-1
     (core))
   (builtin
     (core))
-  (comment)
+  (comment
+    (line_comment))
   (word_definition
     (start_definition)
     (word)
-    (comment)
-    (comment)
+    (comment
+      (stack_effect))
+    (comment
+      (line_comment))
     (builtin
       (core))
     (word)
     (builtin
       (operator))
-    (comment)
+    (comment
+      (block_comment))
     (end_definition)))

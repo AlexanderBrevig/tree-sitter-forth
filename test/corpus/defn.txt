@@ -19,7 +19,8 @@ Define word
   (word_definition
     (start_definition)
     (word)
-    (comment)
+    (comment
+      (stack_effect))
     (number)
     (number)
     (builtin

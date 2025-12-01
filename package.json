@@ -1,14 +1,11 @@
 {
   "name": "tree-sitter-forth",
-  "version": "0.1.0",
+  "version": "0.2.0",
   "description": "Forth grammar for tree-sitter",
   "main": "bindings/node",
-  "keywords": [
-    "parser",
-    "lexer"
-  ],
+  "keywords": ["parser", "lexer"],
   "scripts": {
-    "build": "tree-sitter generate && node-gyp build",
+    "build": "tree-sitter generate --abi 15 && node-gyp build",
     "test": "tree-sitter test",
     "parse": "tree-sitter parse"
   },
@@ -18,18 +15,12 @@
     "nan": "^2.17.0"
   },
   "devDependencies": {
-    "tree-sitter-cli": "^0.20.1"
+    "tree-sitter-cli": "^0.25.10"
   },
   "tree-sitter": [
     {
       "scope": "source.forth",
-      "file-types": [
-        "fs",
-        "forth",
-        "fth",
-        "f",
-        "4th"
-      ]
+      "file-types": ["fs", "forth", "fth", "f", "4th"]
     }
   ]
 }

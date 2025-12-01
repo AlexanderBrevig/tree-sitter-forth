@@ -47,7 +47,10 @@ module.exports = grammar({
       $.comment
     ),
 
-    string: $ => /s"[ ]+.*"/,
+    string: $ => choice(
+      /[sScC]" [^"]*"/,  // s" S" c" C" followed by space and content
+      /\." [^"]*"/,       // ." followed by space and content
+    ),
 
     number: $ => /('\w')|(0[xX][0-9a-fA-F]+)|(\$[0-9a-fA-F]+)|(%[01]+)|(&\d+)|\d+/,
 
@@ -66,9 +69,16 @@ module.exports = grammar({
     ),
 
     comment: $ => choice(
-      /\\.*/,
-      /\(.*\)/,
+      $.line_comment,
+      $.stack_effect,
+      $.block_comment,
     ),
+
+    line_comment: $ => /\\[^\n]*/,
+
+    stack_effect: $ => /\( [^)]*--[^)]*\)/,
+
+    block_comment: $ => /\( [^)]*\)/,
 
     core: $ => choice(...builtin_core.map(x => literal(x))),
 

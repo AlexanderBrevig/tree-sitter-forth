@@ -1,5 +1,5 @@
 ==================
-String
+String lowercase s"
 ==================
 
 s" Hello World!" .s
@@ -10,3 +10,77 @@ s" Hello World!" .s
   (string)
   (builtin
     (core)))
+
+==================
+String uppercase S"
+==================
+
+S" HELLO WORLD!" .s
+
+---
+
+(source_file
+  (string)
+  (builtin
+    (core)))
+
+==================
+String c" counted
+==================
+
+c" counted string" drop
+
+---
+
+(source_file
+  (string)
+  (builtin
+    (core)))
+
+==================
+String C" counted uppercase
+==================
+
+C" COUNTED STRING" drop
+
+---
+
+(source_file
+  (string)
+  (builtin
+    (core)))
+
+==================
+String ." print
+==================
+
+." Print this message" cr
+
+---
+
+(source_file
+  (string)
+  (builtin
+    (core)))
+
+==================
+String empty
+==================
+
+s" "
+
+---
+
+(source_file
+  (string))
+
+==================
+String with multiple spaces
+==================
+
+s"   multiple   spaces   "
+
+---
+
+(source_file
+  (string))

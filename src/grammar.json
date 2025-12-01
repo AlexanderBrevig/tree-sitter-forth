@@ -1,4 +1,5 @@
 {
+  "$schema": "https://tree-sitter.github.io/tree-sitter/assets/schemas/grammar.schema.json",
   "name": "forth",
   "rules": {
     "source_file": {
@@ -47,8 +48,17 @@
       ]
     },
     "string": {
-      "type": "PATTERN",
-      "value": "s\"[ ]+.*\""
+      "type": "CHOICE",
+      "members": [
+        {
+          "type": "PATTERN",
+          "value": "[sScC]\" [^\"]*\""
+        },
+        {
+          "type": "PATTERN",
+          "value": "\\.\" [^\"]*\""
+        }
+      ]
     },
     "number": {
       "type": "PATTERN",
@@ -103,14 +113,30 @@
       "type": "CHOICE",
       "members": [
         {
-          "type": "PATTERN",
-          "value": "\\\\.*"
+          "type": "SYMBOL",
+          "name": "line_comment"
         },
         {
-          "type": "PATTERN",
-          "value": "\\(.*\\)"
+          "type": "SYMBOL",
+          "name": "stack_effect"
+        },
+        {
+          "type": "SYMBOL",
+          "name": "block_comment"
         }
       ]
+    },
+    "line_comment": {
+      "type": "PATTERN",
+      "value": "\\\\[^\\n]*"
+    },
+    "stack_effect": {
+      "type": "PATTERN",
+      "value": "\\( [^)]*--[^)]*\\)"
+    },
+    "block_comment": {
+      "type": "PATTERN",
+      "value": "\\( [^)]*\\)"
     },
     "core": {
       "type": "CHOICE",
@@ -1019,6 +1045,6 @@
   "precedences": [],
   "externals": [],
   "inline": [],
-  "supertypes": []
+  "supertypes": [],
+  "reserved": {}
 }
-
