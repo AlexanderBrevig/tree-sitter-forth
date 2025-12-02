@@ -5,7 +5,7 @@
   "main": "bindings/node",
   "keywords": ["parser", "lexer"],
   "scripts": {
-    "build": "tree-sitter generate --abi 15 && node-gyp build",
+    "build": "tree-sitter generate --abi 14 && node-gyp build",
     "test": "tree-sitter test",
     "parse": "tree-sitter parse"
   },
