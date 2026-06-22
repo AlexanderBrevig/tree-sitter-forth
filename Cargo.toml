@@ -1,11 +1,12 @@
 [package]
-name = "tree-sitter-YOUR-LANGUAGE-NAME"
-description = "YOUR-LANGUAGE-NAME grammar for the tree-sitter parsing library"
-version = "0.0.1"
-keywords = ["incremental", "parsing", "YOUR-LANGUAGE-NAME"]
+name = "tree-sitter-forth"
+description = "Forth grammar for the tree-sitter parsing library"
+version = "0.2.0"
+authors = ["Alexander Brevig"]
+keywords = ["incremental", "parsing", "forth"]
 categories = ["parsing", "text-editors"]
-repository = "https://github.com/tree-sitter/tree-sitter-YOUR-LANGUAGE-NAME"
-edition = "2018"
+repository = "https://github.com/AlexanderBrevig/tree-sitter-forth"
+edition = "2021"
 license = "MIT"
 
 build = "bindings/rust/build.rs"
@@ -20,7 +21,10 @@ include = [
 path = "bindings/rust/lib.rs"
 
 [dependencies]
-tree-sitter = "~0.20.10"
+tree-sitter-language = "0.1"
 
 [build-dependencies]
 cc = "1.0"
+
+[dev-dependencies]
+tree-sitter = "0.25"
